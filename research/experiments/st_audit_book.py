@@ -46,7 +46,10 @@ def signals(panel: pd.DataFrame) -> pd.DataFrame:
 
 
 def simulate(px: pd.DataFrame, flow: pd.DataFrame, funding: pd.DataFrame | None, start: str, end: str,
-             offset: int = 0) -> tuple[pd.DataFrame, pd.DataFrame]:
+             offset: int = 0, long_scale: pd.Series | None = None, short_scale: pd.Series | None = None,
+             exclude_long: pd.DataFrame | None = None, exclude_short: pd.DataFrame | None = None) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """EXP-013 hooks: long_scale/short_scale are per-date multipliers on the 0.10 leg weight (default 1);
+    exclude_long/exclude_short are boolean frames (date x symbol) of candidates to skip at selection."""
     dates = px.index[(px.index >= start) & (px.index <= end)]
     rets = px.pct_change()
     w = pd.Series(0.0, index=px.columns)          # current weights (fraction of equity, signed)
@@ -76,11 +79,15 @@ def simulate(px: pd.DataFrame, flow: pd.DataFrame, funding: pd.DataFrame | None,
             f = flow.loc[d].dropna()
             if len(f) >= 15:
                 ranked = f.sort_values(ascending=False)
-                longs = list(ranked.index[:K])
-                shorts = [s for s in ranked.index[::-1] if s not in longs][:K]
+                xl = set(exclude_long.columns[exclude_long.loc[d].fillna(False).to_numpy().astype(bool)]) if exclude_long is not None and d in exclude_long.index else set()
+                xs = set(exclude_short.columns[exclude_short.loc[d].fillna(False).to_numpy().astype(bool)]) if exclude_short is not None and d in exclude_short.index else set()
+                longs = [s for s in ranked.index[:10] if s not in xl][:K]
+                shorts = [s for s in ranked.index[::-1][:10] if s not in longs and s not in xs][:K]
+                ls = float(long_scale.get(d, 1.0)) if long_scale is not None else 1.0
+                ss = float(short_scale.get(d, 1.0)) if short_scale is not None else 1.0
                 target = pd.Series(0.0, index=px.columns)
-                target[longs] = 0.1
-                target[shorts] = -0.1
+                target[longs] = 0.1 * ls
+                target[shorts] = -0.1 * ss
                 turnover = float((target - w).abs().sum())
                 cost += COST * turnover
                 # close records
