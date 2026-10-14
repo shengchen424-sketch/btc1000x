@@ -1,6 +1,1 @@
-[
-  {"strategy": "EXPIRY_FADE", "params": {"events": "monthly", "hold_bars": 16, "min_move": 0.001, "stop_pct": 0.009},
-   "status": "LEAD", "experiment": "EXP-005b", "registered": "2026-10-14"},
-  {"strategy": "EXPIRY_FADE", "params": {"events": "weekly", "hold_bars": 16, "min_move": 0.001, "stop_pct": 0.009},
-   "status": "LEAD", "experiment": "EXP-005b", "registered": "2026-10-14"}
-]
+[]

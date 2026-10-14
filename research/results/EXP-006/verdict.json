@@ -1,0 +1,223 @@
+{
+ "experiment": "EXP-006",
+ "git_head": "69894429c3e576845de056d8696507f525c0e3ab",
+ "run_at": "2026-10-14T12:57:53.646216+00:00",
+ "candidates": [],
+ "leads": [],
+ "val_rows": [
+  {
+   "n": 340,
+   "mean_r": -0.20176020650711257,
+   "median_r": -0.11969907200343549,
+   "std_r": 0.8047146446579923,
+   "win_rate": 0.4088235294117647,
+   "t_stat": -4.623097655680134,
+   "p_one_sided": 0.9999973084831749,
+   "ci95_lo": -0.2848132201729855,
+   "ci95_hi": -0.11491037123915537,
+   "sum_r": -68.59847021241828,
+   "profit_factor": 0.49860658054527063,
+   "max_dd_r": 68.71241932763795,
+   "max_trade_share_of_profits": 0.07995840264113907,
+   "mean_gross_r": -0.07248912995934585,
+   "mean_cost_r": 0.12927107654776676,
+   "mean_fee_r": 0.07848351611582209,
+   "mean_funding_r": -0.00016111651617016644,
+   "mean_stop_frac": 0.015297480588824176,
+   "median_minutes_held": 120.0,
+   "exit_reasons": {
+    "TIME": 253,
+    "STOP": 87
+   },
+   "years_positive": 0,
+   "years_total": 2,
+   "by_year": {
+    "2023": {
+     "n": 158,
+     "mean_r": -0.16110989395657296,
+     "sum_r": -25.45536324513853
+    },
+    "2024": {
+     "n": 182,
+     "mean_r": -0.23705003828175691,
+     "sum_r": -43.143106967279756
+    }
+   },
+   "trial_id": "SHOCK_FADE@1.0[hold_bars=2_k_sigma=3.0_oi_drop=0.0_sigma_window=720_stop_pct=0.015]",
+   "account_10usdt": {
+    "final_equity": 7.935,
+    "return_pct": -20.65,
+    "max_dd_pct": 20.92,
+    "taken": 178,
+    "skipped_risk": 162
+   },
+   "gate": "FAIL"
+  },
+  {
+   "n": 328,
+   "mean_r": -0.24194007239303109,
+   "median_r": -0.19781151809823946,
+   "std_r": 0.8849280703245056,
+   "win_rate": 0.36585365853658536,
+   "t_stat": -4.951499696612291,
+   "p_one_sided": 0.9999994088577792,
+   "ci95_lo": -0.3363205260227031,
+   "ci95_hi": -0.1449134341672564,
+   "sum_r": -79.3563437449142,
+   "profit_factor": 0.4895973872960953,
+   "max_dd_r": 83.44480002681654,
+   "max_trade_share_of_profits": 0.07139531905274539,
+   "mean_gross_r": -0.10842672843529948,
+   "mean_cost_r": 0.13351334395773165,
+   "mean_fee_r": 0.07849042207912396,
+   "mean_funding_r": -0.00027556859269387934,
+   "mean_stop_frac": 0.015297429870703708,
+   "median_minutes_held": 240.0,
+   "exit_reasons": {
+    "TIME": 213,
+    "STOP": 115
+   },
+   "years_positive": 0,
+   "years_total": 2,
+   "by_year": {
+    "2023": {
+     "n": 152,
+     "mean_r": -0.17087449940675212,
+     "sum_r": -25.97292390982632
+    },
+    "2024": {
+     "n": 176,
+     "mean_r": -0.30331488542663565,
+     "sum_r": -53.38341983508788
+    }
+   },
+   "trial_id": "SHOCK_FADE@1.0[hold_bars=4_k_sigma=3.0_oi_drop=0.0_sigma_window=720_stop_pct=0.015]",
+   "account_10usdt": {
+    "final_equity": 8.116,
+    "return_pct": -18.84,
+    "max_dd_pct": 20.11,
+    "taken": 174,
+    "skipped_risk": 154
+   },
+   "gate": "FAIL"
+  },
+  {
+   "n": 0,
+   "trial_id": "SHOCK_FADE@1.0[hold_bars=2_k_sigma=3.0_oi_drop=0.02_sigma_window=720_stop_pct=0.015]",
+   "account_10usdt": null,
+   "gate": "FAIL"
+  },
+  {
+   "n": 0,
+   "trial_id": "SHOCK_FADE@1.0[hold_bars=4_k_sigma=3.0_oi_drop=0.02_sigma_window=720_stop_pct=0.015]",
+   "account_10usdt": null,
+   "gate": "FAIL"
+  }
+ ],
+ "train_rows": [
+  {
+   "n": 245,
+   "mean_r": -0.2806424823411525,
+   "median_r": -0.48534849172686256,
+   "std_r": 1.0785139460629658,
+   "win_rate": 0.3551020408163265,
+   "t_stat": -4.072965112096243,
+   "p_one_sided": 0.9999686080118065,
+   "ci95_lo": -0.40964015056983194,
+   "ci95_hi": -0.14283240090539395,
+   "sum_r": -68.75740817358236,
+   "profit_factor": 0.5100084252953742,
+   "max_dd_r": 69.21540113353218,
+   "max_trade_share_of_profits": 0.07822621214801878,
+   "mean_gross_r": -0.1430358721367316,
+   "mean_cost_r": 0.13760661020442086,
+   "mean_fee_r": 0.07840250969524734,
+   "mean_funding_r": -0.00031059802992204887,
+   "mean_stop_frac": 0.015301048381558357,
+   "median_minutes_held": 120.0,
+   "exit_reasons": {
+    "TIME": 136,
+    "STOP": 109
+   },
+   "years_positive": 0,
+   "years_total": 2,
+   "by_year": {
+    "2021": {
+     "n": 63,
+     "mean_r": -0.40577092258630326,
+     "sum_r": -25.563568122937106
+    },
+    "2022": {
+     "n": 182,
+     "mean_r": -0.23732879148706185,
+     "sum_r": -43.19384005064526
+    }
+   },
+   "trial_id": "SHOCK_FADE@1.0[hold_bars=2_k_sigma=3.0_oi_drop=0.0_sigma_window=720_stop_pct=0.015]",
+   "account_10usdt": {
+    "final_equity": 6.0306,
+    "return_pct": -39.69,
+    "max_dd_pct": 39.86,
+    "taken": 226,
+    "skipped_risk": 19
+   }
+  },
+  {
+   "n": 233,
+   "mean_r": -0.2373762293210169,
+   "median_r": -0.7224510945547995,
+   "std_r": 1.2372951980012592,
+   "win_rate": 0.34334763948497854,
+   "t_stat": -2.9284772866017734,
+   "p_one_sided": 0.9981271925751779,
+   "ci95_lo": -0.39022822998503925,
+   "ci95_hi": -0.07446719991141434,
+   "sum_r": -55.308661431796935,
+   "profit_factor": 0.609451802542041,
+   "max_dd_r": 57.063692195527715,
+   "max_trade_share_of_profits": 0.08157799537632938,
+   "mean_gross_r": -0.0976859593919409,
+   "mean_cost_r": 0.139690269929076,
+   "mean_fee_r": 0.07838908388328031,
+   "mean_funding_r": -0.00043205270904575374,
+   "mean_stop_frac": 0.015300850165817179,
+   "median_minutes_held": 240.0,
+   "exit_reasons": {
+    "TIME": 118,
+    "STOP": 115
+   },
+   "years_positive": 0,
+   "years_total": 2,
+   "by_year": {
+    "2021": {
+     "n": 63,
+     "mean_r": -0.46376504144528624,
+     "sum_r": -29.217197611053034
+    },
+    "2022": {
+     "n": 170,
+     "mean_r": -0.15347919894555237,
+     "sum_r": -26.091463820743904
+    }
+   },
+   "trial_id": "SHOCK_FADE@1.0[hold_bars=4_k_sigma=3.0_oi_drop=0.0_sigma_window=720_stop_pct=0.015]",
+   "account_10usdt": {
+    "final_equity": 6.9987,
+    "return_pct": -30.01,
+    "max_dd_pct": 31.5,
+    "taken": 214,
+    "skipped_risk": 19
+   }
+  },
+  {
+   "n": 0,
+   "trial_id": "SHOCK_FADE@1.0[hold_bars=2_k_sigma=3.0_oi_drop=0.02_sigma_window=720_stop_pct=0.015]",
+   "account_10usdt": null
+  },
+  {
+   "n": 0,
+   "trial_id": "SHOCK_FADE@1.0[hold_bars=4_k_sigma=3.0_oi_drop=0.02_sigma_window=720_stop_pct=0.015]",
+   "account_10usdt": null
+  }
+ ]
+}

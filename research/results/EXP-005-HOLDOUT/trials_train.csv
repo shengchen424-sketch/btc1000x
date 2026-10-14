@@ -1,0 +1,3 @@
+n,trial_id,account_10usdt
+0,EXPIRY_FADE@1.0[events=monthly_hold_bars=16_min_move=0.001_stop_pct=0.009],
+0,EXPIRY_FADE@1.0[events=weekly_hold_bars=16_min_move=0.001_stop_pct=0.009],

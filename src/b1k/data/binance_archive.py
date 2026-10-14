@@ -217,7 +217,8 @@ def build_metrics(symbol: str = "BTCUSDT", start: str = "2021-06-01", end: str |
         if r is None or r.status_code != 200:
             return d, None, FetchRecord(url, -1 if r is None else r.status_code, None, 0, now, 0)
         df = _read_zip_csv(r.content, None)
-        df["create_time"] = pd.to_datetime(df["create_time"], utc=True).astype("int64") // 10**6
+        # explicit epoch arithmetic: pandas 3 infers string resolution (s/us), so astype("int64") is unit-dependent
+        df["create_time"] = (pd.to_datetime(df["create_time"], utc=True) - pd.Timestamp(0, tz="UTC")) // pd.Timedelta(milliseconds=1)
         df = df.rename(columns={"create_time": "open_time"}).drop(columns=["symbol"])
         return d, df, FetchRecord(url, 200, hashlib.sha256(r.content).hexdigest(), len(r.content), now, len(df))
 
