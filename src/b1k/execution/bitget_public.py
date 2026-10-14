@@ -8,7 +8,7 @@ import requests
 
 API = "https://api.bitget.com/api/v2/mix/market"
 PT = "USDT-FUTURES"
-GRAN = {"1m": "1m", "5m": "5m", "15m": "15m", "1h": "1H", "4h": "4H"}
+GRAN = {"1m": "1m", "5m": "5m", "15m": "15m", "1h": "1H", "4h": "4H", "1d": "1Dutc"}
 
 
 def _get(path: str, params: dict, retries: int = 3) -> dict:
@@ -44,10 +44,32 @@ def candles(symbol: str, rule: str, limit: int = 1000, end_ms: int | None = None
     df = pd.DataFrame(d, columns=["open_time", "open", "high", "low", "close", "volume", "quote_volume"])
     df = df.astype({"open_time": "int64", "open": float, "high": float, "low": float, "close": float,
                     "volume": float, "quote_volume": float}).sort_values("open_time").reset_index(drop=True)
-    step = {"1m": 60_000, "5m": 300_000, "15m": 900_000, "1h": 3_600_000, "4h": 14_400_000}[rule]
+    step = {"1m": 60_000, "5m": 300_000, "15m": 900_000, "1h": 3_600_000, "4h": 14_400_000, "1d": 86_400_000}[rule]
     df["close_time"] = df["open_time"] + step
     now = int(time.time() * 1000)
     return df[df["close_time"] <= now].reset_index(drop=True)
+
+
+def candles_deep(symbol: str, rule: str, n: int) -> pd.DataFrame:
+    """At least n closed candles, paging backwards through history-candles (200 per call)."""
+    step = {"1m": 60_000, "5m": 300_000, "15m": 900_000, "1h": 3_600_000, "4h": 14_400_000, "1d": 86_400_000}[rule]
+    frames = [candles(symbol, rule, limit=min(n, 1000))]
+    end = int(frames[-1]["open_time"].iloc[0]) - 1
+    guard = 0
+    while sum(len(f) for f in frames) < n and guard < 50:
+        d = _get("history-candles", {"productType": PT, "symbol": symbol, "granularity": GRAN[rule],
+                                     "limit": 200, "endTime": end})["data"]
+        if not d:
+            break
+        df = pd.DataFrame(d, columns=["open_time", "open", "high", "low", "close", "volume", "quote_volume"])
+        df = df.astype({"open_time": "int64", "open": float, "high": float, "low": float, "close": float,
+                        "volume": float, "quote_volume": float})
+        df["close_time"] = df["open_time"] + step
+        frames.append(df)
+        end = int(df["open_time"].min()) - 1
+        guard += 1
+    out = pd.concat(frames).drop_duplicates("open_time").sort_values("open_time").reset_index(drop=True)
+    return out.tail(n).reset_index(drop=True)
 
 
 def next_funding(symbol: str = "BTCUSDT") -> tuple[float, int | None]:

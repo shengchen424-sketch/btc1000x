@@ -29,12 +29,53 @@ def load_trials() -> list[dict]:
     return json.loads(p.read_text()) if p.exists() else []
 
 
+def load_daily_rules() -> list[dict]:
+    p = PATHS.root / "research" / "strategy_registry" / "shadow_daily_rules.json"
+    return json.loads(p.read_text()) if p.exists() else []
+
+
+def run_daily() -> dict:
+    """Position-based daily rules (EXP-004 LEADs): after each 00:00 UTC close, compute the target
+    position from Bitget's own closed daily candles and append it with a timestamp, so the forward
+    record exists before the day's outcome. Idempotent per (rule, close_time)."""
+    from b1k.strategies.daily_trend import RULES
+    STATE.mkdir(parents=True, exist_ok=True)
+    rules = load_daily_rules()
+    if not rules:
+        return {"daily_rules": 0}
+    d = bg.candles_deep("BTCUSDT", "1d", 400)
+    if len(d) < 260:
+        return {"daily_rules": len(rules), "error": f"only {len(d)} daily bars from Bitget"}
+    ct = int(d["close_time"].iloc[-1])
+    seen_p = STATE / "daily_seen.json"
+    seen = set(json.loads(seen_p.read_text())) if seen_p.exists() else set()
+    n = 0
+    now_ms = int(time.time() * 1000)
+    for r in rules:
+        key = f"{r['rule']}|{ct}"
+        if key in seen:
+            continue
+        pos = float(RULES[r["rule"]](d).iloc[-1])
+        rec = {"recorded_at_ms": now_ms, "rule": r["rule"], "status": r["status"], "close_time": ct,
+               "close": float(d["close"].iloc[-1]), "target_position": pos, "mode": "DRY_RUN"}
+        with open(STATE / "daily_positions.jsonl", "a") as f:
+            f.write(json.dumps(rec) + "\n")
+        seen.add(key)
+        n += 1
+    seen_p.write_text(json.dumps(sorted(seen)[-2000:]))
+    return {"daily_rules": len(rules), "new_records": n, "last_close_time": ct}
+
+
 def run_once() -> dict:
     STATE.mkdir(parents=True, exist_ok=True)
     now_ms = int(time.time() * 1000)
     trials = load_trials()
+    daily = run_daily()
     if not trials:
-        return {"at": now_ms, "intents": 0, "note": "no trials registered for shadow"}
+        summary = {"at": datetime.now(timezone.utc).isoformat(), "intents": 0, "trials": 0, "daily": daily,
+                   "note": "no intent trials registered for shadow"}
+        (STATE / "last_run.json").write_text(json.dumps(summary))
+        return summary
     bars = {r: bg.candles("BTCUSDT", r) for r in {"15m", "1h", "4h"}}
     t = bg.ticker("BTCUSDT")
     rate, nf = bg.next_funding("BTCUSDT")
@@ -74,7 +115,8 @@ def run_once() -> dict:
         n_int += 1
     p_seen.write_text(json.dumps(sorted(seen)[-5000:]))
     summary = {"at": datetime.now(timezone.utc).isoformat(), "intents": n_int, "trials": len(trials),
-               "last_15m_close": int(bars["15m"]["close_time"].iloc[-1]), "mark": float(t["markPrice"])}
+               "last_15m_close": int(bars["15m"]["close_time"].iloc[-1]), "mark": float(t["markPrice"]),
+               "daily": daily}
     (STATE / "last_run.json").write_text(json.dumps(summary))
     return summary
 

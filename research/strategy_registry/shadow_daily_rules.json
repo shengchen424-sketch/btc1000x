@@ -1,0 +1,5 @@
+[
+  {"rule": "T7_L", "status": "LEAD", "experiment": "EXP-004", "registered": "2026-10-14"},
+  {"rule": "DON_L", "status": "LEAD", "experiment": "EXP-004", "registered": "2026-10-14"},
+  {"rule": "SMA200_L", "status": "LEAD", "experiment": "EXP-004", "registered": "2026-10-14"}
+]

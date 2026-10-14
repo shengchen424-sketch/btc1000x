@@ -181,6 +181,63 @@ def build_funding(symbol: str = "BTCUSDT", start: str = "2020-01-01", end: str |
     return out
 
 
+def build_premium_index(symbol: str = "BTCUSDT", interval: str = "1m", start: str = "2020-01-01",
+                        end: str | None = None) -> Path:
+    """premiumIndexKlines: (mark - index)/index per bar, the input to funding. Monthly files only."""
+    end_d = date.fromisoformat(end) if end else datetime.now(timezone.utc).date()
+    out_dir = PATHS.data_parquet / f"{symbol}_premium_{interval}"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    last_full = (end_d.replace(day=1) - timedelta(days=1)).strftime("%Y-%m")
+    missing = []
+    for ym in _months(start, last_full + "-01"):
+        p = out_dir / f"{ym}.parquet"
+        if p.exists():
+            continue
+        url = f"{BASE}/monthly/premiumIndexKlines/{symbol}/{interval}/{symbol}-{interval}-{ym}.zip"
+        df = _fetch_klines(url, "premium")
+        if df is None:
+            missing.append(ym)
+            continue
+        df[["open_time", "open", "high", "low", "close"]].to_parquet(p, index=False)
+    (out_dir / "MISSING.json").write_text(json.dumps(missing))
+    return out_dir
+
+
+def build_metrics(symbol: str = "BTCUSDT", start: str = "2021-06-01", end: str | None = None) -> Path:
+    """Daily metrics files (5-minute open interest, long/short ratios, taker ratio). One parquet per month."""
+    end_d = date.fromisoformat(end) if end else datetime.now(timezone.utc).date() - timedelta(days=1)
+    out_dir = PATHS.data_parquet / f"{symbol}_metrics_5m"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    missing = []
+    d = date.fromisoformat(start)
+    frames, cur = [], d.strftime("%Y-%m")
+    while d <= end_d:
+        ym = d.strftime("%Y-%m")
+        if ym != cur:
+            if frames:
+                pd.concat(frames).to_parquet(out_dir / f"{cur}.parquet", index=False)
+            frames, cur = [], ym
+        if not (out_dir / f"{ym}.parquet").exists():
+            url = f"{BASE}/daily/metrics/{symbol}/{symbol}-metrics-{d.isoformat()}.zip"
+            r = _get(url)
+            now = datetime.now(timezone.utc).isoformat()
+            if r is None or r.status_code != 200:
+                missing.append(d.isoformat())
+                _manifest_append("metrics", FetchRecord(url, -1 if r is None else r.status_code, None, 0, now, 0))
+            else:
+                df = _read_zip_csv(r.content, None)
+                df["create_time"] = pd.to_datetime(df["create_time"], utc=True).astype("int64") // 10**6
+                df = df.rename(columns={"create_time": "open_time"}).drop(columns=["symbol"])
+                frames.append(df)
+                _manifest_append("metrics", FetchRecord(url, 200, hashlib.sha256(r.content).hexdigest(),
+                                                        len(r.content), now, len(df)))
+        d += timedelta(days=1)
+    if frames:
+        pd.concat(frames).to_parquet(out_dir / f"{cur}.parquet", index=False)
+    (out_dir / "MISSING.json").write_text(json.dumps(missing))
+    return out_dir
+
+
 if __name__ == "__main__":
     import sys
     what = sys.argv[1] if len(sys.argv) > 1 else "all"
@@ -188,3 +245,7 @@ if __name__ == "__main__":
         print(build_klines())
     if what in ("all", "funding"):
         print(build_funding())
+    if what in ("premium",):
+        print(build_premium_index())
+    if what in ("metrics",):
+        print(build_metrics())
