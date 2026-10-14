@@ -25,9 +25,15 @@ def load_events():
     """Re-parse bucket bounds from the question text (the fetch script's first version mis-parsed
     the open-ended buckets); drop events whose buckets do not form a complete partition."""
     from exp011_fetch import parse_bucket
-    out = []
-    for l in open(D / "bucket_prices.jsonl"):
+    out, seen = [], set()
+    lines = []
+    for p in sorted(D.glob("bucket_prices*.jsonl")):
+        lines += open(p).readlines()
+    for l in lines:
         e = json.loads(l)
+        if e["event_id"] in seen:
+            continue
+        seen.add(e["event_id"])
         ok = True
         for b in e["buckets"]:
             pb = parse_bucket(b["q"] or "")
@@ -150,7 +156,9 @@ def part_b(events, edge=0.10, max_price=0.60):
     bets = []
     for r in recs:
         if r["p_model"] - r["p_mkt"] >= edge and r["p_mkt"] <= max_price:
-            price = r["p_mkt"] + 0.01
+            p = r["p_mkt"]
+            # Polymarket "weather_fees": taker-only, rate 0.05, exponent 1 -> 0.05 * p * (1 - p) per share
+            price = p + 0.01 + (0.05 * p * (1 - p) if r.get("fee") else 0.0)
             ret = (1.0 - price) if r["y"] == 1.0 else -price
             bets.append(ret / price)  # return per unit staked
     bets = np.array(bets)

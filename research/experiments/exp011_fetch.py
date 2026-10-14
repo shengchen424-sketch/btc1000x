@@ -55,12 +55,12 @@ def price_at(hist: list[dict], t_ms: int) -> float | None:
     return best
 
 
-def fetch_prices(events_path: Path, cities: set[str], since: str) -> None:
+def fetch_prices(events_path: Path, cities: set[str], since: str, shard: str = "") -> None:
     rows = json.load(open(events_path))
-    out_p = OUT / "bucket_prices.jsonl"
+    out_p = OUT / (f"bucket_prices{shard}.jsonl" if shard else "bucket_prices.jsonl")
     done = set()
-    if out_p.exists():
-        done = {json.loads(l)["event_id"] for l in open(out_p)}
+    for p in OUT.glob("bucket_prices*.jsonl"):
+        done |= {json.loads(l)["event_id"] for l in open(p)}
     n = 0
     with open(out_p, "a") as f:
         for e in rows:
@@ -117,4 +117,6 @@ if __name__ == "__main__":
     if what == "ens":
         fetch_ensembles()
     else:
-        fetch_prices(Path(sys.argv[2]), set(STATIONS), since=sys.argv[3] if len(sys.argv) > 3 else "2025-01-01")
+        cities = set(STATIONS) if len(sys.argv) <= 4 else set(sys.argv[4].split(","))
+        shard = sys.argv[5] if len(sys.argv) > 5 else ""
+        fetch_prices(Path(sys.argv[2]), cities, since=sys.argv[3] if len(sys.argv) > 3 else "2025-01-01", shard=shard)
