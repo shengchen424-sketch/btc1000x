@@ -110,14 +110,26 @@ def stats(x: pd.Series) -> dict:
             "sharpe": round(float(x.mean() / x.std() * np.sqrt(365)), 2), "max_dd_pct": round(100 * float(dd.max()), 1)}
 
 
+def load_funding_daily(px_index) -> pd.DataFrame | None:
+    p = PATHS.data_parquet / "um_1d" / "funding_traded.parquet"
+    if not p.exists():
+        return None
+    f = pd.read_parquet(p)
+    f["date"] = pd.to_datetime(f["funding_time"], unit="ms").dt.normalize()
+    daily = f.groupby(["date", "symbol"])["rate"].sum().unstack().reindex(px_index).fillna(0.0)
+    return daily
+
+
 if __name__ == "__main__":
     OUT.mkdir(parents=True, exist_ok=True)
     panel = build_panel()
     px, flow, in_univ = signals(panel)
     start, end = sys.argv[1] if len(sys.argv) > 1 else "2023-01-01", sys.argv[2] if len(sys.argv) > 2 else "2026-09-30"
+    funding = None if "--no-funding" in sys.argv else load_funding_daily(px.index)
+    print("funding:", "none" if funding is None else f"{funding.shape[1]} symbols")
     allp, alld = [], []
     for off in range(7):
-        d, p = simulate(px, flow, None, start, end, offset=off)
+        d, p = simulate(px, flow, funding, start, end, offset=off)
         p["offset"] = off; d["offset"] = off
         allp.append(p); alld.append(d)
         print("offset", off, stats(d["net"]), "positions", len(p), flush=True)

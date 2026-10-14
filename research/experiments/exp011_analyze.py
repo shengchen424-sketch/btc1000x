@@ -112,8 +112,11 @@ def part_b(events, edge=0.10, max_price=0.60):
         if ens is None:
             continue
         evs = sorted(evs, key=lambda e: e["day"])
-        have = [e for e in evs if e["day"] in ens and all(b["p06"] is not None for b in e["buckets"]) and len(e["buckets"]) >= 5]
-        if len(have) < 20:
+        # a bucket with no print before 06Z has no executable price: it is skipped, the event is kept if >= 8 buckets are priced
+        have = [e for e in evs if e["day"] in ens and sum(b["p06"] is not None for b in e["buckets"]) >= 8]
+        for e in have:
+            e["buckets"] = [b for b in e["buckets"] if b["p06"] is not None and b["resolved_yes"] is not None]
+        if len(have) < 16:
             continue
         split = len(have) // 2
         fit, test = have[:split], have[split:]

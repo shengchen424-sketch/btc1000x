@@ -1,0 +1,52 @@
+{
+ "pooled": {
+  "days": 1369,
+  "ann_pct": 79.3,
+  "sharpe": 2.01,
+  "max_dd_pct": 16.7
+ },
+ "by_offset": [
+  {
+   "days": 1369,
+   "ann_pct": 78.9,
+   "sharpe": 1.79,
+   "max_dd_pct": 26.2
+  },
+  {
+   "days": 1369,
+   "ann_pct": 61.1,
+   "sharpe": 1.58,
+   "max_dd_pct": 19.3
+  },
+  {
+   "days": 1369,
+   "ann_pct": 63.8,
+   "sharpe": 1.54,
+   "max_dd_pct": 22.1
+  },
+  {
+   "days": 1369,
+   "ann_pct": 63.2,
+   "sharpe": 1.52,
+   "max_dd_pct": 24.9
+  },
+  {
+   "days": 1369,
+   "ann_pct": 115.4,
+   "sharpe": 2.24,
+   "max_dd_pct": 22.0
+  },
+  {
+   "days": 1369,
+   "ann_pct": 94.8,
+   "sharpe": 1.88,
+   "max_dd_pct": 18.5
+  },
+  {
+   "days": 1369,
+   "ann_pct": 65.1,
+   "sharpe": 1.62,
+   "max_dd_pct": 26.8
+  }
+ ]
+}
