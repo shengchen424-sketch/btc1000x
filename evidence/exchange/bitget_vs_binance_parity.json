@@ -1,0 +1,32 @@
+{
+ "15m": {
+  "granularity": "15m",
+  "overlap_bars": 950,
+  "close_bps_mean": 0.8709607052706753,
+  "close_bps_p99_abs": 6.570942199242169,
+  "high_bps_p99_abs": 6.925085794759766,
+  "low_bps_p99_abs": 6.95981844182014,
+  "return_corr": 0.9991113012964459,
+  "measured_at": "2026-10-14T12:26:24.205887+00:00"
+ },
+ "1H": {
+  "granularity": "1H",
+  "overlap_bars": 312,
+  "close_bps_mean": 0.9215350395659735,
+  "close_bps_p99_abs": 6.534870598015048,
+  "high_bps_p99_abs": 6.536016436284917,
+  "low_bps_p99_abs": 7.14408984650511,
+  "return_corr": 0.9996296472787801,
+  "measured_at": "2026-10-14T12:26:25.010100+00:00"
+ },
+ "4H": {
+  "granularity": "4H",
+  "overlap_bars": 78,
+  "close_bps_mean": 0.93527875648291,
+  "close_bps_p99_abs": 5.953037273814355,
+  "high_bps_p99_abs": 6.144649657052151,
+  "low_bps_p99_abs": 6.554578946261487,
+  "return_corr": 0.9997286348207501,
+  "measured_at": "2026-10-14T12:26:25.709774+00:00"
+ }
+}

@@ -1,0 +1,10 @@
+[Unit]
+Description=Run the BTC 1000X shadow pass 20 s after every 15m bar close
+
+[Timer]
+OnCalendar=*:00,15,30,45:20
+AccuracySec=5s
+Persistent=true
+
+[Install]
+WantedBy=timers.target

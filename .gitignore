@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+# market data is rebuildable from the public archive; only manifests are committed
+data/raw/
+data/parquet/
+data/cache/
+# runtime state of the shadow runner
+state/
+*.log
+.env

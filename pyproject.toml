@@ -1,0 +1,28 @@
+[project]
+name = "btc1000x"
+version = "0.1.0"
+description = "Research-grade adaptive multi-strategy BTCUSDT perpetual system (Bitget). Research and DRY_RUN only."
+requires-python = ">=3.11"
+dependencies = [
+  "numpy>=1.26",
+  "pandas>=2.1",
+  "pyarrow>=14",
+  "duckdb>=0.10",
+  "requests>=2.31",
+  "scipy>=1.11",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+addopts = "-q -p no:cacheprovider"

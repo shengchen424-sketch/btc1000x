@@ -1,0 +1,19 @@
+{
+ "rows": 2649600,
+ "first": "2020-01-01T00:00:00+00:00",
+ "last": "2026-10-13T23:59:00+00:00",
+ "duplicates": 0,
+ "non_monotonic": 0,
+ "misaligned": 0,
+ "gaps": 1,
+ "missing_bars_total": 918720,
+ "largest_gaps": [
+  {
+   "after": 1735689540000,
+   "missing_bars": 918720
+  }
+ ],
+ "bad_ohlc_rows": 0,
+ "zero_volume_bars": 332,
+ "freshness_s": 44782.45761203766
+}

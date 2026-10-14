@@ -1,0 +1,165 @@
+{
+ "spec": {
+  "price": 83720.6,
+  "min_qty": 0.0001,
+  "qty_step": 0.0001,
+  "min_notional": 5.0,
+  "taker": 0.0006,
+  "maker": 0.0002,
+  "max_lever": 150,
+  "tier1_mmr": 0.004,
+  "tier1_end_usdt": 200000.0,
+  "funding_interval_h": 8
+ },
+ "assumptions": {
+  "equity": 10.0,
+  "risk_per_trade": 0.01,
+  "slip_entry": 0.0003,
+  "slip_stop": 0.001,
+  "liq_buffer": 2.0,
+  "funding_per_8h": 0.0001,
+  "hold_hours": 24.0
+ },
+ "rows": [
+  {
+   "leverage": 5,
+   "qty_btc": 0.0001,
+   "notional_usdt": 8.3721,
+   "margin_usdt": 1.6744,
+   "free_margin_usdt": 8.3206,
+   "risk_budget_usdt": 0.1,
+   "round_trip_cost_usdt": 0.0234,
+   "cost_share_of_risk": 0.234,
+   "max_stop_pct": 0.914,
+   "max_stop_usd": 765.6,
+   "liq_distance_pct": 19.54,
+   "checks": {
+    "lever_allowed": true,
+    "margin_fits": true,
+    "risk_budget_covers_costs": true,
+    "liquidation_beyond_stop": true
+   },
+   "feasible": true
+  },
+  {
+   "leverage": 10,
+   "qty_btc": 0.0001,
+   "notional_usdt": 8.3721,
+   "margin_usdt": 0.8372,
+   "free_margin_usdt": 9.1578,
+   "risk_budget_usdt": 0.1,
+   "round_trip_cost_usdt": 0.0234,
+   "cost_share_of_risk": 0.234,
+   "max_stop_pct": 0.914,
+   "max_stop_usd": 765.6,
+   "liq_distance_pct": 9.54,
+   "checks": {
+    "lever_allowed": true,
+    "margin_fits": true,
+    "risk_budget_covers_costs": true,
+    "liquidation_beyond_stop": true
+   },
+   "feasible": true
+  },
+  {
+   "leverage": 20,
+   "qty_btc": 0.0001,
+   "notional_usdt": 8.3721,
+   "margin_usdt": 0.4186,
+   "free_margin_usdt": 9.5764,
+   "risk_budget_usdt": 0.1,
+   "round_trip_cost_usdt": 0.0234,
+   "cost_share_of_risk": 0.234,
+   "max_stop_pct": 0.914,
+   "max_stop_usd": 765.6,
+   "liq_distance_pct": 4.54,
+   "checks": {
+    "lever_allowed": true,
+    "margin_fits": true,
+    "risk_budget_covers_costs": true,
+    "liquidation_beyond_stop": true
+   },
+   "feasible": true
+  },
+  {
+   "leverage": 30,
+   "qty_btc": 0.0001,
+   "notional_usdt": 8.3721,
+   "margin_usdt": 0.2791,
+   "free_margin_usdt": 9.7159,
+   "risk_budget_usdt": 0.1,
+   "round_trip_cost_usdt": 0.0234,
+   "cost_share_of_risk": 0.234,
+   "max_stop_pct": 0.914,
+   "max_stop_usd": 765.6,
+   "liq_distance_pct": 2.873,
+   "checks": {
+    "lever_allowed": true,
+    "margin_fits": true,
+    "risk_budget_covers_costs": true,
+    "liquidation_beyond_stop": true
+   },
+   "feasible": true
+  },
+  {
+   "leverage": 50,
+   "qty_btc": 0.0001,
+   "notional_usdt": 8.3721,
+   "margin_usdt": 0.1674,
+   "free_margin_usdt": 9.8275,
+   "risk_budget_usdt": 0.1,
+   "round_trip_cost_usdt": 0.0234,
+   "cost_share_of_risk": 0.234,
+   "max_stop_pct": 0.914,
+   "max_stop_usd": 765.6,
+   "liq_distance_pct": 1.54,
+   "checks": {
+    "lever_allowed": true,
+    "margin_fits": true,
+    "risk_budget_covers_costs": true,
+    "liquidation_beyond_stop": false
+   },
+   "feasible": false
+  },
+  {
+   "leverage": 75,
+   "qty_btc": 0.0001,
+   "notional_usdt": 8.3721,
+   "margin_usdt": 0.1116,
+   "free_margin_usdt": 9.8833,
+   "risk_budget_usdt": 0.1,
+   "round_trip_cost_usdt": 0.0234,
+   "cost_share_of_risk": 0.234,
+   "max_stop_pct": 0.914,
+   "max_stop_usd": 765.6,
+   "liq_distance_pct": 0.873,
+   "checks": {
+    "lever_allowed": true,
+    "margin_fits": true,
+    "risk_budget_covers_costs": true,
+    "liquidation_beyond_stop": false
+   },
+   "feasible": false
+  },
+  {
+   "leverage": 100,
+   "qty_btc": 0.0001,
+   "notional_usdt": 8.3721,
+   "margin_usdt": 0.0837,
+   "free_margin_usdt": 9.9113,
+   "risk_budget_usdt": 0.1,
+   "round_trip_cost_usdt": 0.0234,
+   "cost_share_of_risk": 0.234,
+   "max_stop_pct": 0.914,
+   "max_stop_usd": 765.6,
+   "liq_distance_pct": 0.54,
+   "checks": {
+    "lever_allowed": true,
+    "margin_fits": true,
+    "risk_budget_covers_costs": true,
+    "liquidation_beyond_stop": false
+   },
+   "feasible": false
+  }
+ ]
+}
