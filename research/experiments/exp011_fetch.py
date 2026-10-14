@@ -28,18 +28,21 @@ STATIONS = {
     "Sao Paulo": (-23.4356, -46.4731, "SBGR Guarulhos"), "London": (51.5048, 0.0495, "EGLC City"),
     "Paris": (49.0097, 2.5479, "LFPG CDG"),
 }
-BUCKET_RE = re.compile(r"(?:be (?:between )?(-?\d+)(?:-(-?\d+))?°([CF])|be (-?\d+)°([CF]) or (below|higher|lower|above))")
+TAIL_RE = re.compile(r"be (-?\d+)°([CF]) or (below|higher|lower|above)")
+RANGE_RE = re.compile(r"be (?:between )?(-?\d+)(?:-(-?\d+))?°([CF])")
 
 
 def parse_bucket(q: str):
-    m = BUCKET_RE.search(q)
+    """Open-ended buckets first ('61°F or below', '80°F or higher'), then ranges / single values."""
+    m = TAIL_RE.search(q)
+    if m:
+        v, unit, side = int(m.group(1)), m.group(2), m.group(3)
+        return (-999, v, unit) if side in ("below", "lower") else (v, 999, unit)
+    m = RANGE_RE.search(q)
     if not m:
         return None
-    if m.group(1) is not None:
-        lo = int(m.group(1)); hi = int(m.group(2)) if m.group(2) else lo
-        return lo, hi, m.group(3)
-    v = int(m.group(4)); unit = m.group(5); side = m.group(6)
-    return (-999, v, unit) if side in ("below", "lower") else (v, 999, unit)
+    lo = int(m.group(1)); hi = int(m.group(2)) if m.group(2) else lo
+    return lo, hi, m.group(3)
 
 
 def price_at(hist: list[dict], t_ms: int) -> float | None:
