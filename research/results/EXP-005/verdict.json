@@ -1,12 +1,11 @@
 {
  "experiment": "EXP-005",
- "git_head": "37f828643b134014158ed6c610b4e68778ec9ca8",
- "run_at": "2026-10-14T12:54:07.684817+00:00",
- "candidates": [
-  "EXPIRY_FADE@1.0[events=weekly_hold_bars=16_min_move=0.001_stop_pct=0.01]"
- ],
+ "git_head": "30d3533a43daa4ecd873e3f1154f8d8d3e43f848",
+ "run_at": "2026-10-14T12:54:53.716739+00:00",
+ "candidates": [],
  "leads": [
-  "EXPIRY_FADE@1.0[events=monthly_hold_bars=16_min_move=0.001_stop_pct=0.01]"
+  "EXPIRY_FADE@1.0[events=monthly_hold_bars=16_min_move=0.001_stop_pct=0.01]",
+  "EXPIRY_FADE@1.0[events=weekly_hold_bars=16_min_move=0.001_stop_pct=0.01]"
  ],
  "val_rows": [
   {
@@ -198,7 +197,7 @@
     "taken": 80,
     "skipped_risk": 5
    },
-   "gate": "CANDIDATE"
+   "gate": "LEAD"
   }
  ],
  "train_rows": [
