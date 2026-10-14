@@ -1,0 +1,722 @@
+{
+ "experiment": "EXP-012",
+ "git_head": "6a9db4e04a504b87aa8bceec3022fcac816cff6f",
+ "run_at": "2026-10-14T14:06:55.783543+00:00",
+ "candidates": [],
+ "leads": [],
+ "val_rows": [
+  {
+   "n": 7,
+   "mean_r": -0.49865748419946715,
+   "median_r": -0.36425322011476025,
+   "std_r": 0.49946914334966186,
+   "win_rate": 0.14285714285714285,
+   "t_stat": -2.6414518497477943,
+   "p_one_sided": 0.9807671607435917,
+   "ci95_lo": -0.8574766054261553,
+   "ci95_hi": -0.1836707911528057,
+   "sum_r": -3.49060238939627,
+   "profit_factor": 0.05201275082691577,
+   "max_dd_r": 2.139804992570881,
+   "max_trade_share_of_profits": 1.0,
+   "mean_gross_r": -0.19585872551986278,
+   "mean_cost_r": 0.3027987586796042,
+   "mean_fee_r": 0.19122354187655075,
+   "mean_funding_r": 0.0,
+   "mean_stop_frac": 0.006278577082785955,
+   "median_minutes_held": 15.0,
+   "exit_reasons": {
+    "TIME": 6,
+    "STOP": 1
+   },
+   "years_positive": 0,
+   "years_total": 2,
+   "by_year": {
+    "2023": {
+     "n": 1,
+     "mean_r": -1.350797396825389,
+     "sum_r": -1.350797396825389
+    },
+    "2024": {
+     "n": 6,
+     "mean_r": -0.3566341654284801,
+     "sum_r": -2.1398049925708804
+    }
+   },
+   "trial_id": "OFLOW_SHOCK@1.0[hold_bars=3_int_mult=3.0_mode=CONT_oi_drop=0.0_q=0.99_q_window_bars=8640_stop_pct=0.006]",
+   "account_10usdt": {
+    "final_equity": 9.8043,
+    "return_pct": -1.96,
+    "max_dd_pct": 1.96,
+    "taken": 7,
+    "skipped_risk": 0
+   },
+   "gate": "FAIL"
+  },
+  {
+   "n": 1,
+   "mean_r": -0.42641059756862043,
+   "median_r": -0.42641059756862043,
+   "std_r": NaN,
+   "win_rate": 0.0,
+   "t_stat": NaN,
+   "p_one_sided": NaN,
+   "ci95_lo": NaN,
+   "ci95_hi": NaN,
+   "sum_r": -0.42641059756862043,
+   "profit_factor": 0.0,
+   "max_dd_r": 0.0,
+   "max_trade_share_of_profits": NaN,
+   "mean_gross_r": -0.1408230272306901,
+   "mean_cost_r": 0.2855875703379303,
+   "mean_fee_r": 0.19039172200800183,
+   "mean_funding_r": 0.0,
+   "mean_stop_frac": 0.006298110566829789,
+   "median_minutes_held": 15.0,
+   "exit_reasons": {
+    "TIME": 1
+   },
+   "years_positive": 0,
+   "years_total": 1,
+   "by_year": {
+    "2024": {
+     "n": 1,
+     "mean_r": -0.42641059756862043,
+     "sum_r": -0.42641059756862043
+    }
+   },
+   "trial_id": "OFLOW_SHOCK@1.0[hold_bars=3_int_mult=3.0_mode=CONT_oi_drop=0.005_q=0.99_q_window_bars=8640_stop_pct=0.006]",
+   "account_10usdt": {
+    "final_equity": 9.9819,
+    "return_pct": -0.18,
+    "max_dd_pct": 0.18,
+    "taken": 1,
+    "skipped_risk": 0
+   },
+   "gate": "FAIL"
+  },
+  {
+   "n": 7,
+   "mean_r": -0.38185264438785843,
+   "median_r": -0.4466468881839255,
+   "std_r": 0.6558245116496444,
+   "win_rate": 0.2857142857142857,
+   "t_stat": -1.5404839504723704,
+   "p_one_sided": 0.9128133826035618,
+   "ci95_lo": -0.8213942545313795,
+   "ci95_hi": 0.07560199570184675,
+   "sum_r": -2.672968510715009,
+   "profit_factor": 0.22600372001573305,
+   "max_dd_r": 2.102666889552502,
+   "max_trade_share_of_profits": 0.8491325080537385,
+   "mean_gross_r": -0.08475112209295886,
+   "mean_cost_r": 0.29710152229489956,
+   "mean_fee_r": 0.19113643328166718,
+   "mean_funding_r": -0.005566583492063605,
+   "mean_stop_frac": 0.006278577082785955,
+   "median_minutes_held": 60.0,
+   "exit_reasons": {
+    "TIME": 6,
+    "STOP": 1
+   },
+   "years_positive": 0,
+   "years_total": 2,
+   "by_year": {
+    "2023": {
+     "n": 1,
+     "mean_r": -1.350797396825389,
+     "sum_r": -1.350797396825389
+    },
+    "2024": {
+     "n": 6,
+     "mean_r": -0.22036185231493668,
+     "sum_r": -1.3221711138896202
+    }
+   },
+   "trial_id": "OFLOW_SHOCK@1.0[hold_bars=12_int_mult=3.0_mode=CONT_oi_drop=0.0_q=0.99_q_window_bars=8640_stop_pct=0.006]",
+   "account_10usdt": {
+    "final_equity": 9.8584,
+    "return_pct": -1.42,
+    "max_dd_pct": 1.82,
+    "taken": 7,
+    "skipped_risk": 0
+   },
+   "gate": "FAIL"
+  },
+  {
+   "n": 1,
+   "mean_r": -0.1897208154190015,
+   "median_r": -0.1897208154190015,
+   "std_r": NaN,
+   "win_rate": 0.0,
+   "t_stat": NaN,
+   "p_one_sided": NaN,
+   "ci95_lo": NaN,
+   "ci95_hi": NaN,
+   "sum_r": -0.1897208154190015,
+   "profit_factor": 0.0,
+   "max_dd_r": 0.0,
+   "max_trade_share_of_profits": NaN,
+   "mean_gross_r": 0.09607992493334504,
+   "mean_cost_r": 0.28580074035234654,
+   "mean_fee_r": 0.19053382113676884,
+   "mean_funding_r": 0.0,
+   "mean_stop_frac": 0.006298110566829789,
+   "median_minutes_held": 60.0,
+   "exit_reasons": {
+    "TIME": 1
+   },
+   "years_positive": 0,
+   "years_total": 1,
+   "by_year": {
+    "2024": {
+     "n": 1,
+     "mean_r": -0.1897208154190015,
+     "sum_r": -0.1897208154190015
+    }
+   },
+   "trial_id": "OFLOW_SHOCK@1.0[hold_bars=12_int_mult=3.0_mode=CONT_oi_drop=0.005_q=0.99_q_window_bars=8640_stop_pct=0.006]",
+   "account_10usdt": {
+    "final_equity": 9.9919,
+    "return_pct": -0.08,
+    "max_dd_pct": 0.08,
+    "taken": 1,
+    "skipped_risk": 0
+   },
+   "gate": "FAIL"
+  },
+  {
+   "n": 7,
+   "mean_r": -0.037485849708445707,
+   "median_r": -0.20731659425160667,
+   "std_r": 0.561323631722637,
+   "win_rate": 0.2857142857142857,
+   "t_stat": -0.17668637200989373,
+   "p_one_sided": 0.5672160408753298,
+   "ci95_lo": -0.3814460136039782,
+   "ci95_hi": 0.3792289598544129,
+   "sum_r": -0.26240094795911995,
+   "profit_factor": 0.8390189037859611,
+   "max_dd_r": 1.4226943457300303,
+   "max_trade_share_of_profits": 0.7334634659101186,
+   "mean_gross_r": 0.24739442872967002,
+   "mean_cost_r": 0.28488027843811575,
+   "mean_fee_r": 0.18992017078174478,
+   "mean_funding_r": 0.0,
+   "mean_stop_frac": 0.006321704451134807,
+   "median_minutes_held": 15.0,
+   "exit_reasons": {
+    "TIME": 7
+   },
+   "years_positive": 1,
+   "years_total": 2,
+   "by_year": {
+    "2023": {
+     "n": 1,
+     "mean_r": 1.0030919647621448,
+     "sum_r": 1.0030919647621448
+    },
+    "2024": {
+     "n": 6,
+     "mean_r": -0.2109154854535441,
+     "sum_r": -1.2654929127212646
+    }
+   },
+   "trial_id": "OFLOW_SHOCK@1.0[hold_bars=3_int_mult=3.0_mode=REV_oi_drop=0.0_q=0.99_q_window_bars=8640_stop_pct=0.006]",
+   "account_10usdt": {
+    "final_equity": 10.0125,
+    "return_pct": 0.13,
+    "max_dd_pct": 0.65,
+    "taken": 7,
+    "skipped_risk": 0
+   },
+   "gate": "FAIL"
+  },
+  {
+   "n": 1,
+   "mean_r": -0.14476449241091133,
+   "median_r": -0.14476449241091133,
+   "std_r": NaN,
+   "win_rate": 0.0,
+   "t_stat": NaN,
+   "p_one_sided": NaN,
+   "ci95_lo": NaN,
+   "ci95_hi": NaN,
+   "sum_r": -0.14476449241091133,
+   "profit_factor": 0.0,
+   "max_dd_r": 0.0,
+   "max_trade_share_of_profits": NaN,
+   "mean_gross_r": 0.1408230272307292,
+   "mean_cost_r": 0.28558751964164053,
+   "mean_fee_r": 0.19039167131171206,
+   "mean_funding_r": 0.0,
+   "mean_stop_frac": 0.006301890567169987,
+   "median_minutes_held": 15.0,
+   "exit_reasons": {
+    "TIME": 1
+   },
+   "years_positive": 0,
+   "years_total": 1,
+   "by_year": {
+    "2024": {
+     "n": 1,
+     "mean_r": -0.14476449241091133,
+     "sum_r": -0.14476449241091133
+    }
+   },
+   "trial_id": "OFLOW_SHOCK@1.0[hold_bars=3_int_mult=3.0_mode=REV_oi_drop=0.005_q=0.99_q_window_bars=8640_stop_pct=0.006]",
+   "account_10usdt": {
+    "final_equity": 9.9939,
+    "return_pct": -0.06,
+    "max_dd_pct": 0.06,
+    "taken": 1,
+    "skipped_risk": 0
+   },
+   "gate": "FAIL"
+  },
+  {
+   "n": 7,
+   "mean_r": -0.32470828629138265,
+   "median_r": -0.1321297814316176,
+   "std_r": 0.5608144798476007,
+   "win_rate": 0.2857142857142857,
+   "t_stat": -1.5318744523187393,
+   "p_one_sided": 0.9117813093417315,
+   "ci95_lo": -0.7471872632817448,
+   "ci95_hi": 0.01983414580138384,
+   "sum_r": -2.2729580040396784,
+   "profit_factor": 0.12455894514523601,
+   "max_dd_r": 2.2656712639789256,
+   "max_trade_share_of_profits": 0.7477798279627685,
+   "mean_gross_r": -0.016481743072845525,
+   "mean_cost_r": 0.3082265432185371,
+   "mean_fee_r": 0.18973723678538937,
+   "mean_funding_r": 0.007838178412698515,
+   "mean_stop_frac": 0.006321704451134807,
+   "median_minutes_held": 60.0,
+   "exit_reasons": {
+    "TIME": 6,
+    "STOP": 1
+   },
+   "years_positive": 0,
+   "years_total": 2,
+   "by_year": {
+    "2023": {
+     "n": 1,
+     "mean_r": -0.007286740060752774,
+     "sum_r": -0.007286740060752774
+    },
+    "2024": {
+     "n": 6,
+     "mean_r": -0.37761187732982093,
+     "sum_r": -2.2656712639789256
+    }
+   },
+   "trial_id": "OFLOW_SHOCK@1.0[hold_bars=12_int_mult=3.0_mode=REV_oi_drop=0.0_q=0.99_q_window_bars=8640_stop_pct=0.006]",
+   "account_10usdt": {
+    "final_equity": 9.8768,
+    "return_pct": -1.23,
+    "max_dd_pct": 1.23,
+    "taken": 7,
+    "skipped_risk": 0
+   },
+   "gate": "FAIL"
+  },
+  {
+   "n": 1,
+   "mean_r": -0.38188069987443285,
+   "median_r": -0.38188069987443285,
+   "std_r": NaN,
+   "win_rate": 0.0,
+   "t_stat": NaN,
+   "p_one_sided": NaN,
+   "ci95_lo": NaN,
+   "ci95_hi": NaN,
+   "sum_r": -0.38188069987443285,
+   "profit_factor": 0.0,
+   "max_dd_r": 0.0,
+   "max_trade_share_of_profits": NaN,
+   "mean_gross_r": -0.09607992493331328,
+   "mean_cost_r": 0.28580077494111955,
+   "mean_fee_r": 0.19053385572554188,
+   "mean_funding_r": 0.0,
+   "mean_stop_frac": 0.006301890567169987,
+   "median_minutes_held": 60.0,
+   "exit_reasons": {
+    "TIME": 1
+   },
+   "years_positive": 0,
+   "years_total": 1,
+   "by_year": {
+    "2024": {
+     "n": 1,
+     "mean_r": -0.38188069987443285,
+     "sum_r": -0.38188069987443285
+    }
+   },
+   "trial_id": "OFLOW_SHOCK@1.0[hold_bars=12_int_mult=3.0_mode=REV_oi_drop=0.005_q=0.99_q_window_bars=8640_stop_pct=0.006]",
+   "account_10usdt": {
+    "final_equity": 9.9838,
+    "return_pct": -0.16,
+    "max_dd_pct": 0.16,
+    "taken": 1,
+    "skipped_risk": 0
+   },
+   "gate": "FAIL"
+  }
+ ],
+ "train_rows": [
+  {
+   "n": 43,
+   "mean_r": -0.240840965798218,
+   "median_r": -0.29841288677502853,
+   "std_r": 0.8658341432474957,
+   "win_rate": 0.3023255813953488,
+   "t_stat": -1.8240211935184658,
+   "p_one_sided": 0.9623653670150512,
+   "ci95_lo": -0.4876863622776381,
+   "ci95_hi": 0.02055970969255715,
+   "sum_r": -10.356161529323375,
+   "profit_factor": 0.48932627216282604,
+   "max_dd_r": 12.627283259422928,
+   "max_trade_share_of_profits": 0.20990062468166856,
+   "mean_gross_r": 0.06559540509452347,
+   "mean_cost_r": 0.30643637089274156,
+   "mean_fee_r": 0.19053639007427567,
+   "mean_funding_r": 0.0,
+   "mean_stop_frac": 0.006298421269534999,
+   "median_minutes_held": 15.0,
+   "exit_reasons": {
+    "TIME": 35,
+    "STOP": 8
+   },
+   "years_positive": 0,
+   "years_total": 2,
+   "by_year": {
+    "2021": {
+     "n": 20,
+     "mean_r": -0.3161129294032238,
+     "sum_r": -6.322258588064475
+    },
+    "2022": {
+     "n": 23,
+     "mean_r": -0.17538708440256096,
+     "sum_r": -4.033902941258902
+    }
+   },
+   "trial_id": "OFLOW_SHOCK@1.0[hold_bars=3_int_mult=3.0_mode=CONT_oi_drop=0.0_q=0.99_q_window_bars=8640_stop_pct=0.006]",
+   "account_10usdt": {
+    "final_equity": 9.22,
+    "return_pct": -7.8,
+    "max_dd_pct": 9.24,
+    "taken": 43,
+    "skipped_risk": 0
+   }
+  },
+  {
+   "n": 1,
+   "mean_r": -1.3507973968253846,
+   "median_r": -1.3507973968253846,
+   "std_r": NaN,
+   "win_rate": 0.0,
+   "t_stat": NaN,
+   "p_one_sided": NaN,
+   "ci95_lo": NaN,
+   "ci95_hi": NaN,
+   "sum_r": -1.3507973968253846,
+   "profit_factor": 0.0,
+   "max_dd_r": 0.0,
+   "max_trade_share_of_profits": NaN,
+   "mean_gross_r": -0.9523809523809423,
+   "mean_cost_r": 0.39841644444444235,
+   "mean_fee_r": 0.19111485714285611,
+   "mean_funding_r": 0.0,
+   "mean_stop_frac": 0.006301890567170184,
+   "median_minutes_held": 5.0,
+   "exit_reasons": {
+    "STOP": 1
+   },
+   "years_positive": 0,
+   "years_total": 1,
+   "by_year": {
+    "2021": {
+     "n": 1,
+     "mean_r": -1.3507973968253846,
+     "sum_r": -1.3507973968253846
+    }
+   },
+   "trial_id": "OFLOW_SHOCK@1.0[hold_bars=3_int_mult=3.0_mode=CONT_oi_drop=0.005_q=0.99_q_window_bars=8640_stop_pct=0.006]",
+   "account_10usdt": {
+    "final_equity": 9.8871,
+    "return_pct": -1.13,
+    "max_dd_pct": 1.13,
+    "taken": 1,
+    "skipped_risk": 0
+   }
+  },
+  {
+   "n": 43,
+   "mean_r": -0.436848795414622,
+   "median_r": -0.7756246538903667,
+   "std_r": 1.0705795584953817,
+   "win_rate": 0.23255813953488372,
+   "t_stat": -2.675755479931596,
+   "p_one_sided": 0.994707723068661,
+   "ci95_lo": -0.7337559637926554,
+   "ci95_hi": -0.10408008237661194,
+   "sum_r": -18.784498202828747,
+   "profit_factor": 0.3844723256645531,
+   "max_dd_r": 20.847009199096696,
+   "max_trade_share_of_profits": 0.22997011335983025,
+   "mean_gross_r": -0.11172814293234015,
+   "mean_cost_r": 0.32512065248228184,
+   "mean_fee_r": 0.190605952663985,
+   "mean_funding_r": 0.0006743269878183863,
+   "mean_stop_frac": 0.006298421269534999,
+   "median_minutes_held": 60.0,
+   "exit_reasons": {
+    "TIME": 28,
+    "STOP": 15
+   },
+   "years_positive": 0,
+   "years_total": 2,
+   "by_year": {
+    "2021": {
+     "n": 20,
+     "mean_r": -0.5781152761023166,
+     "sum_r": -11.562305522046332
+    },
+    "2022": {
+     "n": 23,
+     "mean_r": -0.31400837742532234,
+     "sum_r": -7.222192680782414
+    }
+   },
+   "trial_id": "OFLOW_SHOCK@1.0[hold_bars=12_int_mult=3.0_mode=CONT_oi_drop=0.0_q=0.99_q_window_bars=8640_stop_pct=0.006]",
+   "account_10usdt": {
+    "final_equity": 8.7186,
+    "return_pct": -12.81,
+    "max_dd_pct": 14.32,
+    "taken": 43,
+    "skipped_risk": 0
+   }
+  },
+  {
+   "n": 1,
+   "mean_r": -1.3507973968253846,
+   "median_r": -1.3507973968253846,
+   "std_r": NaN,
+   "win_rate": 0.0,
+   "t_stat": NaN,
+   "p_one_sided": NaN,
+   "ci95_lo": NaN,
+   "ci95_hi": NaN,
+   "sum_r": -1.3507973968253846,
+   "profit_factor": 0.0,
+   "max_dd_r": 0.0,
+   "max_trade_share_of_profits": NaN,
+   "mean_gross_r": -0.9523809523809423,
+   "mean_cost_r": 0.39841644444444235,
+   "mean_fee_r": 0.19111485714285611,
+   "mean_funding_r": 0.0,
+   "mean_stop_frac": 0.006301890567170184,
+   "median_minutes_held": 5.0,
+   "exit_reasons": {
+    "STOP": 1
+   },
+   "years_positive": 0,
+   "years_total": 1,
+   "by_year": {
+    "2021": {
+     "n": 1,
+     "mean_r": -1.3507973968253846,
+     "sum_r": -1.3507973968253846
+    }
+   },
+   "trial_id": "OFLOW_SHOCK@1.0[hold_bars=12_int_mult=3.0_mode=CONT_oi_drop=0.005_q=0.99_q_window_bars=8640_stop_pct=0.006]",
+   "account_10usdt": {
+    "final_equity": 9.8871,
+    "return_pct": -1.13,
+    "max_dd_pct": 1.13,
+    "taken": 1,
+    "skipped_risk": 0
+   }
+  },
+  {
+   "n": 43,
+   "mean_r": -0.29969853447663247,
+   "median_r": -0.30591274946584807,
+   "std_r": 0.9349521532241148,
+   "win_rate": 0.3023255813953488,
+   "t_stat": -2.101984266121943,
+   "p_one_sided": 0.9792042941621426,
+   "ci95_lo": -0.5679577810103993,
+   "ci95_hi": -0.02312608062387256,
+   "sum_r": -12.887036982495196,
+   "profit_factor": 0.4430675150530305,
+   "max_dd_r": 13.913799086657255,
+   "max_trade_share_of_profits": 0.21038664206249433,
+   "mean_gross_r": 0.01944677132432625,
+   "mean_cost_r": 0.3191453058009587,
+   "mean_fee_r": 0.190397444625426,
+   "mean_funding_r": 0.0,
+   "mean_stop_frac": 0.006301766453839593,
+   "median_minutes_held": 15.0,
+   "exit_reasons": {
+    "TIME": 30,
+    "STOP": 13
+   },
+   "years_positive": 0,
+   "years_total": 2,
+   "by_year": {
+    "2021": {
+     "n": 20,
+     "mean_r": -0.2253110706182301,
+     "sum_r": -4.506221412364602
+    },
+    "2022": {
+     "n": 23,
+     "mean_r": -0.364383285657852,
+     "sum_r": -8.380815570130595
+    }
+   },
+   "trial_id": "OFLOW_SHOCK@1.0[hold_bars=3_int_mult=3.0_mode=REV_oi_drop=0.0_q=0.99_q_window_bars=8640_stop_pct=0.006]",
+   "account_10usdt": {
+    "final_equity": 9.0701,
+    "return_pct": -9.3,
+    "max_dd_pct": 10.04,
+    "taken": 43,
+    "skipped_risk": 0
+   }
+  },
+  {
+   "n": 1,
+   "mean_r": 2.1416969575382145,
+   "median_r": 2.1416969575382145,
+   "std_r": NaN,
+   "win_rate": 1.0,
+   "t_stat": NaN,
+   "p_one_sided": NaN,
+   "ci95_lo": NaN,
+   "ci95_hi": NaN,
+   "sum_r": 2.1416969575382145,
+   "profit_factor": Infinity,
+   "max_dd_r": 0.0,
+   "max_trade_share_of_profits": 1.0,
+   "mean_gross_r": 2.4295974436242207,
+   "mean_cost_r": 0.28790048608600616,
+   "mean_fee_r": 0.19193351161482414,
+   "mean_funding_r": 0.0,
+   "mean_stop_frac": 0.006298110566829985,
+   "median_minutes_held": 15.0,
+   "exit_reasons": {
+    "TIME": 1
+   },
+   "years_positive": 1,
+   "years_total": 1,
+   "by_year": {
+    "2021": {
+     "n": 1,
+     "mean_r": 2.1416969575382145,
+     "sum_r": 2.1416969575382145
+    }
+   },
+   "trial_id": "OFLOW_SHOCK@1.0[hold_bars=3_int_mult=3.0_mode=REV_oi_drop=0.005_q=0.99_q_window_bars=8640_stop_pct=0.006]",
+   "account_10usdt": {
+    "final_equity": 10.179,
+    "return_pct": 1.79,
+    "max_dd_pct": 0.0,
+    "taken": 1,
+    "skipped_risk": 0
+   }
+  },
+  {
+   "n": 43,
+   "mean_r": -0.3512119224092844,
+   "median_r": -0.39873506656780605,
+   "std_r": 1.159852342037893,
+   "win_rate": 0.4186046511627907,
+   "t_stat": -1.9856411947699155,
+   "p_one_sided": 0.9731864930394024,
+   "ci95_lo": -0.6772051662040652,
+   "ci95_hi": 0.003211798454664252,
+   "sum_r": -15.102112663599229,
+   "profit_factor": 0.4768264864017209,
+   "max_dd_r": 16.34636939109022,
+   "max_trade_share_of_profits": 0.26266972630324065,
+   "mean_gross_r": -0.0140353412200935,
+   "mean_cost_r": 0.3371765811891909,
+   "mean_fee_r": 0.19038920059752015,
+   "mean_funding_r": 0.0,
+   "mean_stop_frac": 0.006301766453839593,
+   "median_minutes_held": 60.0,
+   "exit_reasons": {
+    "TIME": 23,
+    "STOP": 20
+   },
+   "years_positive": 0,
+   "years_total": 2,
+   "by_year": {
+    "2021": {
+     "n": 20,
+     "mean_r": -0.35417427161870385,
+     "sum_r": -7.0834854323740775
+    },
+    "2022": {
+     "n": 23,
+     "mean_r": -0.3486359665750067,
+     "sum_r": -8.018627231225153
+    }
+   },
+   "trial_id": "OFLOW_SHOCK@1.0[hold_bars=12_int_mult=3.0_mode=REV_oi_drop=0.0_q=0.99_q_window_bars=8640_stop_pct=0.006]",
+   "account_10usdt": {
+    "final_equity": 8.8959,
+    "return_pct": -11.04,
+    "max_dd_pct": 11.48,
+    "taken": 43,
+    "skipped_risk": 0
+   }
+  },
+  {
+   "n": 1,
+   "mean_r": 3.6154499146183476,
+   "median_r": 3.6154499146183476,
+   "std_r": NaN,
+   "win_rate": 1.0,
+   "t_stat": NaN,
+   "p_one_sided": NaN,
+   "ci95_lo": NaN,
+   "ci95_hi": NaN,
+   "sum_r": 3.6154499146183476,
+   "profit_factor": Infinity,
+   "max_dd_r": 0.0,
+   "max_trade_share_of_profits": 1.0,
+   "mean_gross_r": 3.904677707427329,
+   "mean_cost_r": 0.2892277928089814,
+   "mean_fee_r": 0.1928182942586585,
+   "mean_funding_r": 0.0,
+   "mean_stop_frac": 0.006298110566829985,
+   "median_minutes_held": 60.0,
+   "exit_reasons": {
+    "TIME": 1
+   },
+   "years_positive": 1,
+   "years_total": 1,
+   "by_year": {
+    "2021": {
+     "n": 1,
+     "mean_r": 3.6154499146183476,
+     "sum_r": 3.6154499146183476
+    }
+   },
+   "trial_id": "OFLOW_SHOCK@1.0[hold_bars=12_int_mult=3.0_mode=REV_oi_drop=0.005_q=0.99_q_window_bars=8640_stop_pct=0.006]",
+   "account_10usdt": {
+    "final_equity": 10.3022,
+    "return_pct": 3.02,
+    "max_dd_pct": 0.0,
+    "taken": 1,
+    "skipped_risk": 0
+   }
+  }
+ ]
+}
