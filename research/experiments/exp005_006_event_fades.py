@@ -24,7 +24,8 @@ from b1k.strategies.event_fade import ExpiryFade, ShockFade
 def gate(s: dict, n_min: int, p_bonf: float) -> str:
     if s.get("n", 0) < n_min or not (s["mean_r"] > 0) or s["years_positive"] < s["years_total"]:
         return "FAIL"
-    if s["ci95_lo"] > 0 and s["p_one_sided"] < p_bonf and s["max_trade_share_of_profits"] <= 0.20:
+    if (s["ci95_lo"] > 0 and s["p_one_sided"] < p_bonf and s["max_trade_share_of_profits"] <= 0.20
+            and s["mean_stop_frac"] <= 0.0091):  # 10 USDT feasibility line, as registered
         return "CANDIDATE"
     return "LEAD" if s["p_one_sided"] < 0.05 else "FAIL"
 
