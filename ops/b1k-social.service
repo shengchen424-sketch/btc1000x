@@ -1,0 +1,9 @@
+[Unit]
+Description=BTC 1000X public social/sentiment collector (read-only, polite)
+
+[Service]
+Type=oneshot
+WorkingDirectory=/root/btc1000x
+Environment=B1K_ROOT=/root/btc1000x
+ExecStart=/usr/bin/flock -n /root/btc1000x/state/social.lock /usr/bin/timeout 300 /usr/bin/nice -n 10 /root/btc1000x/.venv/bin/python -m b1k.intelligence.social_collector
+Nice=10

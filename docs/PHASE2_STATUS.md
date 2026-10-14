@@ -1,4 +1,4 @@
-# BTC 1000X — Phase 2 status (2026-10-14 13:05 UTC)
+# BTC 1000X — Phase 2 status (2026-10-14 13:15 UTC, after round 3)
 
 Autonomous research loop, reporting after each round. Everything below is on `main`.
 
@@ -8,46 +8,55 @@ Autonomous research loop, reporting after each round. Everything below is on `ma
 |---|---|---|---|---|---|
 | EXP-001 | A failed-break 15m; B trend-pullback 1h/4h | 24 | 0 lead; costs 0.2–0.6 R/trade | — | closed |
 | EXP-001-INV | the same 24 inverted | 24 | all negative: loss is cost, not direction | — | closed |
-| EXP-002 | C funding-rate extreme reversal | 8 | 0 lead (positive on TRAIN only) | — | closed |
-| EXP-004 | D daily-close trend, perp + funding | 6 | 3 long rules LEAD (Sharpe 1.4–1.6, below buy-and-hold) | **REJECTED** (T7_L -10.5 %/yr) | closed |
-| EXP-005 / 005b | E options-expiry 08:00 UTC fade | 4 + 2 | 2 LEAD (240-min hold, +0.26 R, p 0.008) | **REJECTED** (-0.08 R, every half-year negative) | closed |
-| EXP-006 | F 3-sigma hourly shock fade, OI-flush filter | 4 | 0 lead; OI filter removes continuation, no reversal left | — | closed |
+| EXP-002 | C funding-rate extreme reversal | 8 | 0 lead | — | closed |
+| EXP-004 | D daily trend, perp + funding | 6 | 3 long LEADs (below buy-and-hold) | **REJECTED** (-10.5 %/yr) | closed |
+| EXP-005/005b | E options-expiry 08:00 fade | 6 | 2 LEADs (+0.26 R, p 0.008) | **REJECTED** (-0.08 R) | closed |
+| EXP-006 | F 3-sigma shock fade + OI flush | 4 | 0 lead | — | closed |
+| EXP-007 | G FOMC drift | 3 | 0 lead (negative) | — | closed |
+| EXP-008 | H daily compression breakout | 4 | 0 lead (Sharpe 0.9, p 0.09; TRAIN negative) | — | closed |
+| EXP-009 | I Fear & Greed / exchange flows | 6 | 1 CANDIDATE (FNG_L25, 8 trades; TRAIN -13 %/yr) | **REJECTED** (-13 %/yr) | closed |
+| EXP-010 | B long with maker entries (rescue) | 4 | fill 98 %, net still -0.04..-0.10 R | — | closed |
 
-Six families, 72 trials, two one-shot holdout looks spent. Shadow registries are empty. No trial is
-eligible for forward observation, let alone live capital.
+Ten families, 89 trials, three one-shot holdout looks spent, one literature scan (LIT-001).
+Shadow registries are empty. No trial is eligible for forward observation.
 
-## What the evidence says, in order of strength
+## The one finding that repeats
 
-1. **Cost share per trade is the binding constraint at 10 USDT.** With a 1 % risk budget the widest
-   executable stop is 0.91 % of price, and at that width a taker round trip is >= 0.2 R. No intraday
-   family produced a gross edge above 0.15 R.
-2. **Two mechanisms that were real in 2023–24 were gone in 2025–26** (expiry fade, long daily trend).
-   The validation period was a bull market with one drawdown; the holdout was a bear/range window.
-   A result that holds in one regime and not the next is not an edge for a 10 USDT account that cannot
-   survive learning which regime it is in.
-3. **Nothing in the literature scan (LIT-001) clears the cost hurdle unconditionally**; the three
-   mechanism-backed candidates have now been tested (two) or lack historical data (ETF flows,
-   2024+ only, and the public source blocks automated access).
+Every rule that passed VALIDATION (daily trend longs, expiry fade, fear-buying) failed the holdout
+in the same way: 2023–24 was a bull regime with one drawdown, 2025–26 a bear/range regime. The
+rules were long-the-regime, not an edge. The short mirrors did the opposite (DON_S +15 %, FNG_S75
++16 % in the holdout after failing both earlier periods). Nothing worked in both.
 
-## What remains that is cheap and registered-testable
+At the intraday level the constraint is arithmetic: with 10 USDT and 1 % risk the widest executable
+stop is 0.91 % and a round trip costs >= 0.2 R; no intraday family produced a gross edge above
+0.15 R; maker entries recover ~0.05 R of that.
 
-- EXP-007 FOMC pre-announcement drift (calendar from federalreserve.gov; ~8 events a year; low power).
-- EXP-008 daily volatility-compression breakout (undocumented in the literature; daily clock so costs
-  are not binding; the only daily family not yet tried).
-- Maker-fee execution study: fill probability of a passive limit at the signal close, measured on 1m
-  bars — a cost-model input, not a strategy. Would lower cost share from ~0.2 R to ~0.06 R on
-  1.5 % stops, which is the only way Strategy B long (gross +0.08..+0.15 R) could turn net positive.
-  This would be a registered rescue attempt of a closed family and is flagged as such.
+## Social-media data (owner request)
 
-## Decisions only the owner can make
+- Obtainable with history: Fear & Greed (2018–), CoinMetrics on-chain flows (2019–). Tested: EXP-009.
+- Not obtainable without paying or bypassing access controls: X/Twitter history (API is paid),
+  Reddit (403 for this egress), Google Trends / GDELT / Wikipedia pageviews (rate-limited for this
+  shared address; could work from the VPS).
+- Built: `b1k.intelligence.social_collector` — public Telegram channel previews (no login) plus
+  F&G, lexicon score, hourly timer (`ops/b1k-social.*`). Tested live: 73 messages from 4 channels.
+  It builds a forward dataset only; the first testable sample is months away.
 
-1. Capital: 10 USDT cannot pay for any intraday strategy; 200–300 USDT changes the feasible stop
-   width and the cost share. The research can continue at 10 USDT but the answer so far is "no".
-2. Whether to spend effort on the maker-execution rescue of Strategy B (low prior, transparent).
-3. Whether to widen the universe beyond BTC (the owner's earlier project found that the only factors
-   with evidence are cross-sectional books over many coins, which this project's scope excludes).
+## Decisions only the owner can make (the loop is paused here on purpose)
+
+1. **Capital.** Research at 10 USDT has answered "no" ten times. 200–300 USDT changes which stops
+   and horizons are executable.
+2. **Universe.** The owner's earlier project found the only factors with out-of-sample evidence are
+   cross-sectional long/short books across many coins (flow, carry). This project is BTC-only by
+   charter. Widening it is a scope decision.
+3. **Paid data.** X API basic tier, or a sentiment vendor, if social signals are to be tested on
+   history rather than collected forward for months.
+4. **Forward collection on the VPS.** Deploying `b1k-social.timer` costs nothing and starts the
+   clock on a social dataset; it needs the VPS connection (network allowlist + a dedicated SSH key).
+
+Continuing to run new rule families on the same 2020–2026 data without one of these changes would be
+a search for the one in twenty that passes by chance; the registrations' failure criteria forbid it.
 
 ## Operations
-- Repository: github.com/shengchen424-sketch/btc1000x, 30 tests passing, data 0.3 GB (rebuildable).
-- Shadow runner is built and tested against live Bitget data; nothing is registered for it to run.
+- Repository: github.com/shengchen424-sketch/btc1000x, 35 tests passing, data 0.3 GB (rebuildable),
+  alt-data snapshots in `evidence/alt/`.
 - No order has been or can be sent (`LIVE_TRADING` False; live path raises).
