@@ -103,6 +103,20 @@ class Backtester:
             return pd.DataFrame()
         return pd.DataFrame([t.to_row() for t in trades])
 
+    maker_limit_window_min: Optional[int] = None  # set by MakerBacktester
+
+    def _entry(self, it: SignalIntent, j: int, s: float) -> Optional[tuple[int, float, float, float]]:
+        """Returns (index of entry bar, entry fill, entry fee rate, entry slippage) or None if unfilled."""
+        c = self.costs
+        if self.maker_limit_window_min is None:
+            return j, self.m_open[j] * (1 + s * c.slip_entry), c.taker_fee, c.slip_entry
+        limit = it.entry
+        end = min(j + self.maker_limit_window_min, len(self.m_open_time))
+        for k in range(j, end):
+            if (s > 0 and self.m_low[k] < limit) or (s < 0 and self.m_high[k] > limit):
+                return k, limit, c.maker_fee, 0.0
+        return None
+
     def _simulate(self, it: SignalIntent, time_exit_ms: int, strategy: Strategy) -> Optional[Trade]:
         c = self.costs
         j = int(np.searchsorted(self.m_open_time, it.signal_timestamp, side="left"))
@@ -110,7 +124,10 @@ class Backtester:
             return None  # no 1m bar to fill on (data gap): no trade
         long = it.direction == Direction.LONG
         s = 1.0 if long else -1.0
-        entry_fill = self.m_open[j] * (1 + s * c.slip_entry)
+        ent = self._entry(it, j, s)
+        if ent is None:
+            return None  # passive order not filled inside its window
+        j, entry_fill, entry_fee_rate, entry_slip = ent
         entry_time = int(self.m_open_time[j])
         stop = it.stop_loss
         if (long and stop >= entry_fill) or (not long and stop <= entry_fill):
@@ -164,8 +181,8 @@ class Backtester:
             return None  # ran off the end of the data: open position is not a trade
         exit_time = int(self.m_open_time[k])
         gross = s * (exit_fill - entry_fill) / risk_per_unit
-        fee = c.taker_fee * (entry_fill + exit_fill) / risk_per_unit
-        slip = (c.slip_entry * self.m_open[j] + slip_exit * (exit_fill / (1 - s * slip_exit))) / risk_per_unit
+        fee = (entry_fee_rate * entry_fill + c.taker_fee * exit_fill) / risk_per_unit
+        slip = (entry_slip * self.m_open[j] + slip_exit * (exit_fill / (1 - s * slip_exit))) / risk_per_unit
         # funding on entry notional for each settlement in (entry_time, exit_time]
         if len(self.f_time):
             a = np.searchsorted(self.f_time, entry_time, side="right")
@@ -184,3 +201,11 @@ class Backtester:
             mfe_r=mfe, mae_r=mae, minutes_held=(exit_time - entry_time) // 60_000,
             features=it.supporting_features,
         )
+
+
+class MakerBacktester(Backtester):
+    """Passive limit entry at the signal close, cancelled after `window_min` minutes (EXP-010)."""
+
+    def __init__(self, bars1m, funding, costs=COSTS, window_min: int = 60):
+        super().__init__(bars1m, funding, costs)
+        self.maker_limit_window_min = window_min

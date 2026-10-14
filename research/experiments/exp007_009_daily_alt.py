@@ -49,20 +49,34 @@ def trials_for(exp: str, d: pd.DataFrame) -> dict[str, tuple[pd.Series, bool]]:
     }
 
 
+def holdout_gate(r: dict, bh: dict) -> str:
+    if r["cagr"] > 0 and r["sharpe"] >= 0.7 and r["p_one_sided"] < 0.05 and r["max_dd"] < bh["max_dd"] and r["mar"] > bh["mar"]:
+        return "CONFIRMED"
+    return "WEAK" if (r["cagr"] > 0 and r["sharpe"] >= 0.3) else "REJECTED"
+
+
 def main(exp: str) -> None:
+    holdout = exp.endswith("-HOLDOUT")
+    base = exp.replace("-HOLDOUT", "")
     head = git_head()
     out = PATHS.results / exp
     out.mkdir(parents=True, exist_ok=True)
-    m = load_1m(start="2019-12-01", end=SPLITS.validation[1])
     fund = pd.read_parquet(PATHS.data_parquet / "BTCUSDT_funding.parquet")
+    if holdout:
+        import os
+        os.environ["B1K_UNSEAL_HOLDOUT"] = exp
+        m = load_1m(start="2024-04-01", end=SPLITS.holdout[1], allow_holdout=True)
+        windows = {"HOLDOUT": (ms(SPLITS.holdout[0]), ms(SPLITS.holdout[1]) + 86_400_000)}
+    else:
+        m = load_1m(start="2019-12-01", end=SPLITS.validation[1])
+        windows = {"TRAIN": (ms(SPLITS.train[0]), ms(SPLITS.train[1]) + 86_400_000),
+                   "VAL": (ms(SPLITS.validation[0]), ms(SPLITS.validation[1]) + 86_400_000)}
     d = resample(m, "1d")
-    trials = trials_for(exp, d)
+    trials = trials_for(base, d)
     p_bonf = 0.05 / len(trials)
     sims = {"BUY_HOLD": simulate(d, pd.Series(1.0, index=d.index), fund)}
     for name, (target, _) in trials.items():
         sims[name] = simulate(d, target, fund)
-    windows = {"TRAIN": (ms(SPLITS.train[0]), ms(SPLITS.train[1]) + 86_400_000),
-               "VAL": (ms(SPLITS.validation[0]), ms(SPLITS.validation[1]) + 86_400_000)}
     results = {}
     for split, (a, b) in windows.items():
         results[split] = {}
@@ -73,17 +87,20 @@ def main(exp: str) -> None:
             r = summarize_daily(s[(s.open_time >= a) & (s.open_time < b)])
             if split == "VAL":
                 r["gate"] = gate(r, bh, long_side, p_bonf)
+            elif split == "HOLDOUT" and name == "FNG_L25":
+                r["gate"] = holdout_gate(r, bh)
             results[split][name] = r
             print(split, name, {k: round(r[k], 3) for k in ["cagr", "sharpe", "max_dd", "mar", "p_one_sided", "time_in_market"]},
                   "trades", r["trades"], r.get("gate", ""), flush=True)
         print(split, "BUY_HOLD", {k: round(bh[k], 3) for k in ["cagr", "sharpe", "max_dd", "mar"]})
     pd.concat([s.assign(rule=n) for n, s in sims.items()]).to_parquet(out / "daily_sims.parquet", index=False)
+    key = "HOLDOUT" if holdout else "VAL"
     verdict = {"experiment": exp, "git_head": head, "run_at": datetime.now(timezone.utc).isoformat(),
-               "candidates": [n for n, r in results["VAL"].items() if r.get("gate") == "CANDIDATE"],
-               "leads": [n for n, r in results["VAL"].items() if r.get("gate") == "LEAD"], "results": results}
+               "candidates": [n for n, r in results[key].items() if r.get("gate") in ("CANDIDATE", "CONFIRMED")],
+               "leads": [n for n, r in results[key].items() if r.get("gate") in ("LEAD", "WEAK")], "results": results}
     (out / "verdict.json").write_text(json.dumps(verdict, indent=1, default=str))
     print(json.dumps({k: verdict[k] for k in ["candidates", "leads", "git_head"]}))
 
 
 if __name__ == "__main__":
-    main({"007": "EXP-007", "008": "EXP-008", "009": "EXP-009"}[sys.argv[1]])
+    main({"007": "EXP-007", "008": "EXP-008", "009": "EXP-009", "009h": "EXP-009-HOLDOUT"}[sys.argv[1]])
