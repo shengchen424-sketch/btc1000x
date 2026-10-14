@@ -1,0 +1,226 @@
+{
+ "experiment": "EXP-013",
+ "git_head": "71d7563574c2b86750a04a7f9e36fe31eb91e93c",
+ "results": {
+  "F1a_btc_nearhigh_long": {
+   "independent_2025_26": {
+    "ann_diff_pct": 1.44,
+    "ci95_ann_pct": [
+     -11.99,
+     14.52
+    ],
+    "p_one_sided": 0.4091805191393432,
+    "A": {
+     "days": 638,
+     "ann_pct": 102.3,
+     "sharpe": 2.12,
+     "max_dd_pct": 15.3
+    },
+    "B": {
+     "days": 638,
+     "ann_pct": 104.3,
+     "sharpe": 2.09,
+     "max_dd_pct": 15.3
+    }
+   },
+   "dev_2023_24": {
+    "ann_diff_pct": -12.74,
+    "ci95_ann_pct": [
+     -29.29,
+     3.1
+    ],
+    "p_one_sided": 0.9328926636017584,
+    "A": {
+     "days": 731,
+     "ann_pct": 61.5,
+     "sharpe": 1.94,
+     "max_dd_pct": 16.7
+    },
+    "B": {
+     "days": 731,
+     "ann_pct": 42.4,
+     "sharpe": 1.5,
+     "max_dd_pct": 17.8
+    }
+   },
+   "same_sign": false,
+   "gate": "DISCARD"
+  },
+  "F1b_btc_nearhigh_both": {
+   "independent_2025_26": {
+    "ann_diff_pct": -0.51,
+    "ci95_ann_pct": [
+     -9.54,
+     7.77
+    ],
+    "p_one_sided": 0.5455304125191027,
+    "A": {
+     "days": 638,
+     "ann_pct": 102.3,
+     "sharpe": 2.12,
+     "max_dd_pct": 15.3
+    },
+    "B": {
+     "days": 638,
+     "ann_pct": 102.5,
+     "sharpe": 2.2,
+     "max_dd_pct": 15.3
+    }
+   },
+   "dev_2023_24": {
+    "ann_diff_pct": -11.5,
+    "ci95_ann_pct": [
+     -23.16,
+     -0.7
+    ],
+    "p_one_sided": 0.9714174864139605,
+    "A": {
+     "days": 731,
+     "ann_pct": 61.5,
+     "sharpe": 1.94,
+     "max_dd_pct": 16.7
+    },
+    "B": {
+     "days": 731,
+     "ann_pct": 45.9,
+     "sharpe": 1.91,
+     "max_dd_pct": 16.1
+    }
+   },
+   "same_sign": true,
+   "gate": "DISCARD"
+  },
+  "F2a_short_crowding": {
+   "independent_2025_26": {
+    "ann_diff_pct": -4.38,
+    "ci95_ann_pct": [
+     -9.94,
+     0.42
+    ],
+    "p_one_sided": 0.950827253080129,
+    "A": {
+     "days": 638,
+     "ann_pct": 102.3,
+     "sharpe": 2.12,
+     "max_dd_pct": 15.3
+    },
+    "B": {
+     "days": 638,
+     "ann_pct": 93.7,
+     "sharpe": 2.0,
+     "max_dd_pct": 15.3
+    }
+   },
+   "dev_2023_24": {
+    "ann_diff_pct": 0.63,
+    "ci95_ann_pct": [
+     -0.38,
+     2.1
+    ],
+    "p_one_sided": 0.1573046615592682,
+    "A": {
+     "days": 731,
+     "ann_pct": 61.5,
+     "sharpe": 1.94,
+     "max_dd_pct": 16.7
+    },
+    "B": {
+     "days": 731,
+     "ann_pct": 62.5,
+     "sharpe": 1.96,
+     "max_dd_pct": 16.5
+    }
+   },
+   "same_sign": false,
+   "gate": "DISCARD"
+  },
+  "F2b_long_crowding": {
+   "independent_2025_26": {
+    "ann_diff_pct": 6.4,
+    "ci95_ann_pct": [
+     -6.04,
+     19.2
+    ],
+    "p_one_sided": 0.15595984229888438,
+    "A": {
+     "days": 638,
+     "ann_pct": 102.3,
+     "sharpe": 2.12,
+     "max_dd_pct": 15.3
+    },
+    "B": {
+     "days": 638,
+     "ann_pct": 117.3,
+     "sharpe": 2.44,
+     "max_dd_pct": 13.8
+    }
+   },
+   "dev_2023_24": {
+    "ann_diff_pct": -2.13,
+    "ci95_ann_pct": [
+     -8.61,
+     2.82
+    ],
+    "p_one_sided": 0.6938966430990601,
+    "A": {
+     "days": 731,
+     "ann_pct": 61.5,
+     "sharpe": 1.94,
+     "max_dd_pct": 16.7
+    },
+    "B": {
+     "days": 731,
+     "ann_pct": 58.1,
+     "sharpe": 1.86,
+     "max_dd_pct": 16.7
+    }
+   },
+   "same_sign": false,
+   "gate": "DISCARD"
+  },
+  "F3_ethbtc_long": {
+   "independent_2025_26": {
+    "ann_diff_pct": -3.87,
+    "ci95_ann_pct": [
+     -25.33,
+     17.88
+    ],
+    "p_one_sided": 0.6274558888256657,
+    "A": {
+     "days": 638,
+     "ann_pct": 102.3,
+     "sharpe": 2.12,
+     "max_dd_pct": 15.3
+    },
+    "B": {
+     "days": 638,
+     "ann_pct": 95.0,
+     "sharpe": 2.04,
+     "max_dd_pct": 14.3
+    }
+   },
+   "dev_2023_24": {
+    "ann_diff_pct": -29.96,
+    "ci95_ann_pct": [
+     -53.12,
+     -8.54
+    ],
+    "p_one_sided": 0.9971981175360226,
+    "A": {
+     "days": 731,
+     "ann_pct": 61.5,
+     "sharpe": 1.94,
+     "max_dd_pct": 16.7
+    },
+    "B": {
+     "days": 731,
+     "ann_pct": 20.1,
+     "sharpe": 0.85,
+     "max_dd_pct": 15.7
+    }
+   },
+   "same_sign": true,
+   "gate": "DISCARD"
+  }
+ }
+}

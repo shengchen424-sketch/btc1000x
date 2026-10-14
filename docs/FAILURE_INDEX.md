@@ -31,4 +31,6 @@ parameters of a listed entry are refused.
 | Cross-platform prediction-market arbitrage | AUDIT-001 (Synpath) | Polymarket/Kalshi | artefact of sampled prices | no bid/ask; legal/geographic split |
 | Solana new-token early entry, deployer/operator history, attention, right-tail bags | Axiom #27–#77, AX66–AX88 | Pump.fun / PumpSwap | all negative except C03 (pending 10-28) | profit only in creation slot; costs mis-modelled 13x |
 
+| Regime gates / crowding filters as overlays on the flow book (BTC near-high, ETH/BTC, funding crowding) | EXP-013 | 30 perps weekly, 2025–26 paired | 0/5; CIs ±10–20 %/yr | tail-driven book makes 638 days underpowered; gates remove the winning tail |
+
 Open, not failed: Smart Trader flow book (forward checkpoints 11-27, 12-25, 2027-04-02); Axiom C03 (10-28).
