@@ -29,6 +29,14 @@ Twelve families, 105 trials, three holdout looks. Shadow registries empty.
   profit sits in creation-slot entries (not imitable, AUC 0.40–0.44); one survivor (C03, +1.08 % at
   0.01 SOL, Kish ~21) awaits its clean re-test on 10-28.
 
+## Program pivot (owner, 2026-10-14): research the validated strategy, not new ones
+- ST-AUDIT-001: the Smart Trader flow book reproduced independently (+79 %/yr, Sharpe 2.0, DD 17 %
+  pooled over 7 offsets, 2023–2026-09). Top 1 % of positions = 89 % of PnL; long leg median negative;
+  legs correlate -0.67; since 2025 the short leg carries; capacity knee 200–300 USDT; 141/180 coins on Bitget.
+- EXP-013: five incremental overlays, paired B − A on 2025–26: 0 adopted (CIs ±10–20 %/yr).
+- EXP-011 closed: Polymarket temperature market calibrated (Brier 0.058); ensemble archive unavailable.
+- `docs/FAILURE_INDEX.md` created: 26 mechanism families with their failure causes.
+
 ## The owner's five priorities, against the evidence
 
 | # | Direction | Status |
