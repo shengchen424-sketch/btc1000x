@@ -41,6 +41,12 @@ def run(exp: str) -> None:
         t0 = ms(SPLITS.train[0])
         trials = [(ExpiryFade(events=e, hold_bars=h), 20 if e == "monthly" else 40)
                   for e, h in itertools.product(["monthly", "weekly"], [6, 16])]
+    elif exp == "EXP-005b":
+        m = load_1m(start="2019-12-01", end=SPLITS.validation[1])
+        bars = resample(m, "15m")
+        t0 = ms(SPLITS.train[0])
+        trials = [(ExpiryFade(events=e, hold_bars=16, stop_pct=0.009), 20 if e == "monthly" else 40)
+                  for e in ["monthly", "weekly"]]
     else:
         m = load_1m(start="2021-05-01", end=SPLITS.validation[1])
         bars = resample(m, "1h")
@@ -84,4 +90,4 @@ def run(exp: str) -> None:
 
 
 if __name__ == "__main__":
-    run({"005": "EXP-005", "006": "EXP-006"}[sys.argv[1]])
+    run({"005": "EXP-005", "005b": "EXP-005b", "006": "EXP-006"}[sys.argv[1]])
