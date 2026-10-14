@@ -35,6 +35,7 @@ Twelve families, 105 trials, three holdout looks. Shadow registries empty.
   legs correlate -0.67; since 2025 the short leg carries; capacity knee 200–300 USDT; 141/180 coins on Bitget.
 - EXP-013: five incremental overlays, paired B − A on 2025–26: 0 adopted (CIs ±10–20 %/yr).
 - EXP-011 closed: Polymarket temperature market calibrated (Brier 0.058); ensemble archive unavailable.
+- EXP-014: residual momentum (14d) significant standalone (Sharpe 1.7 both windows) but corr 0.47 with the flow book; carry decayed. EXP-015: flow+RM14 blend +21 %/yr point estimate, p 0.08, DD doubles: not adopted.
 - `docs/FAILURE_INDEX.md` created: 26 mechanism families with their failure causes.
 
 ## The owner's five priorities, against the evidence
