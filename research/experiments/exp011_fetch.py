@@ -112,10 +112,69 @@ def fetch_ensembles() -> None:
         time.sleep(1.0)
 
 
+SLUGS = {"NYC": "nyc", "Chicago": "chicago", "Miami": "miami", "Los Angeles": "los-angeles", "Denver": "denver",
+         "Dallas": "dallas", "Atlanta": "atlanta", "Houston": "houston", "Seattle": "seattle", "Toronto": "toronto",
+         "Sao Paulo": "sao-paulo", "London": "london", "Paris": "paris"}
+
+
+def fetch_by_slugs(start: str, end: str, cities: list[str], shard: str) -> None:
+    """Look up each (city, day) event by its Gamma slug, then fetch bucket prices at the decision
+    times. public-search returned a spring-2026 subset; slugs give a complete daily series."""
+    from datetime import date
+    out_p = OUT / f"bucket_prices_s{shard}.jsonl"
+    done = set()
+    for p in OUT.glob("bucket_prices*.jsonl"):
+        done |= {json.loads(l)["event_id"] for l in open(p)}
+    d0, d1 = date.fromisoformat(start), date.fromisoformat(end)
+    n = 0
+    with open(out_p, "a") as f:
+        for city in cities:
+            d = d0
+            while d <= d1:
+                sl = f"highest-temperature-in-{SLUGS[city]}-on-{d.strftime('%B').lower()}-{d.day}-{d.year}"
+                try:
+                    r = S.get("https://gamma-api.polymarket.com/events", params={"slug": sl}, timeout=30)
+                    ev = r.json() if r.status_code == 200 else []
+                except Exception:
+                    ev = []
+                d += timedelta(days=1)
+                if not ev or not ev[0].get("closed") or ev[0]["id"] in done:
+                    continue
+                e = ev[0]
+                dd = d - timedelta(days=1)
+                t06 = int(datetime(dd.year, dd.month, dd.day, 6, tzinfo=timezone.utc).timestamp() * 1000)
+                t12p = int((datetime(dd.year, dd.month, dd.day, 12, tzinfo=timezone.utc) - timedelta(days=1)).timestamp() * 1000)
+                buckets = []
+                for m in e["markets"]:
+                    b = parse_bucket(m.get("question") or "")
+                    toks = json.loads(m.get("clobTokenIds", "[]"))
+                    if b is None or not toks:
+                        continue
+                    try:
+                        rr = S.get("https://clob.polymarket.com/prices-history",
+                                   params={"market": toks[0], "interval": "max", "fidelity": 60}, timeout=30)
+                        hist = rr.json().get("history", []) if rr.status_code == 200 else []
+                    except Exception:
+                        hist = []
+                    final = json.loads(m.get("outcomePrices") or "[null,null]")
+                    buckets.append({"q": m.get("question"), "lo": b[0], "hi": b[1], "unit": b[2], "p06": price_at(hist, t06),
+                                    "p12prev": price_at(hist, t12p), "resolved_yes": float(final[0]) if final and final[0] is not None else None,
+                                    "n_hist": len(hist), "fees": m.get("feesEnabled"), "spread": m.get("spread")})
+                    time.sleep(0.1)
+                f.write(json.dumps({"event_id": e["id"], "city": city, "day": dd.isoformat(), "buckets": buckets}) + "\n")
+                f.flush()
+                n += 1
+                if n % 20 == 0:
+                    print("events", n, city, dd, flush=True)
+    print("done", n)
+
+
 if __name__ == "__main__":
     what = sys.argv[1]
     if what == "ens":
         fetch_ensembles()
+    elif what == "slugs":
+        fetch_by_slugs(sys.argv[2], sys.argv[3], sys.argv[4].split(","), sys.argv[5])
     else:
         cities = set(STATIONS) if len(sys.argv) <= 4 else set(sys.argv[4].split(","))
         shard = sys.argv[5] if len(sys.argv) > 5 else ""

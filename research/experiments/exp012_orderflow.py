@@ -20,9 +20,11 @@ from b1k.data.store import load_1m, resample
 from b1k.learning.trade_log import write_trade_log
 from b1k.strategies.orderflow import OrderFlowShock
 
-EXP = "EXP-012"
+VARIANT_B = "b" in [a for a in sys.argv[1:] if not a.startswith("--")]
+EXP = "EXP-012b" if VARIANT_B else "EXP-012"
 OUT = PATHS.results / EXP
 P_BONF = 0.05 / 8
+INT_MULT = 1.0 if VARIANT_B else 3.0   # EXP-012b: the single pre-declared relaxation
 
 
 def gate(s: dict) -> str:
@@ -46,7 +48,7 @@ def main() -> None:
     v1 = ms(SPLITS.validation[1]) + 86_400_000
     rows_tr, rows_val, frames = [], [], []
     for mode, hold, oi in itertools.product(["CONT", "REV"], [3, 12], [0.0, 0.005]):
-        strat = OrderFlowShock(metrics, mode=mode, hold_bars=hold, oi_drop=oi)
+        strat = OrderFlowShock(metrics, mode=mode, hold_bars=hold, oi_drop=oi, int_mult=INT_MULT)
         tr = bt.run(strat, b5, None, start_ms=t0, end_ms=v1)
         if len(tr):
             tr["split"] = ["TRAIN" if x < t1 else "VAL" for x in tr["signal_time"]]
