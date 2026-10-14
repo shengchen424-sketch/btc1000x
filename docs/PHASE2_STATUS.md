@@ -1,62 +1,50 @@
-# BTC 1000X — Phase 2 status (2026-10-14 13:15 UTC, after round 3)
+# BTC 1000X — Phase 2 status (2026-10-14 ~14:30 UTC, after round 4)
 
-Autonomous research loop, reporting after each round. Everything below is on `main`.
-
-## Scoreboard
+## Scoreboard (this repository)
 
 | Exp | Family | Trials | VALIDATION 2023–24 | Holdout 2025-01..2026-09 | State |
 |---|---|---|---|---|---|
-| EXP-001 | A failed-break 15m; B trend-pullback 1h/4h | 24 | 0 lead; costs 0.2–0.6 R/trade | — | closed |
-| EXP-001-INV | the same 24 inverted | 24 | all negative: loss is cost, not direction | — | closed |
+| EXP-001 / INV | A failed-break 15m; B trend-pullback; inversions | 48 | all negative: cost, not direction | — | closed |
 | EXP-002 | C funding-rate extreme reversal | 8 | 0 lead | — | closed |
-| EXP-004 | D daily trend, perp + funding | 6 | 3 long LEADs (below buy-and-hold) | **REJECTED** (-10.5 %/yr) | closed |
-| EXP-005/005b | E options-expiry 08:00 fade | 6 | 2 LEADs (+0.26 R, p 0.008) | **REJECTED** (-0.08 R) | closed |
+| EXP-004 | D daily trend, perp + funding | 6 | 3 LEADs | **REJECTED** | closed |
+| EXP-005 / 005b | E options-expiry 08:00 fade | 6 | 2 LEADs | **REJECTED** | closed |
 | EXP-006 | F 3-sigma shock fade + OI flush | 4 | 0 lead | — | closed |
-| EXP-007 | G FOMC drift | 3 | 0 lead (negative) | — | closed |
-| EXP-008 | H daily compression breakout | 4 | 0 lead (Sharpe 0.9, p 0.09; TRAIN negative) | — | closed |
-| EXP-009 | I Fear & Greed / exchange flows | 6 | 1 CANDIDATE (FNG_L25, 8 trades; TRAIN -13 %/yr) | **REJECTED** (-13 %/yr) | closed |
-| EXP-010 | B long with maker entries (rescue) | 4 | fill 98 %, net still -0.04..-0.10 R | — | closed |
+| EXP-007 | G FOMC drift | 3 | 0 lead | — | closed |
+| EXP-008 | H daily compression breakout | 4 | 0 lead | — | closed |
+| EXP-009 | I Fear & Greed / exchange flows | 6 | 1 CANDIDATE (8 trades) | **REJECTED** | closed |
+| EXP-010 | B long with maker entries (rescue) | 4 | net still negative | — | closed |
+| EXP-012 / 012b | J order-flow shocks (taker imbalance, intensity, OI) | 16 | gross within ±0.02 R | — | closed |
+| EXP-011 | K Polymarket daily temperature: ensemble vs market | — | running (prices exist only from ~2026-09-15) | — | in progress |
 
-Ten families, 89 trials, three one-shot holdout looks spent, one literature scan (LIT-001).
-Shadow registries are empty. No trial is eligible for forward observation.
+Twelve families, 105 trials, three holdout looks. Shadow registries empty.
 
-## The one finding that repeats
+## Audits and readings done this round
+- AUDIT-001: four public "profitable" repositories — none verifiable; two backtests are circular
+  (`research/results/AUDIT-001.md`).
+- Weather Quant (owner's project, 39 tickets): live copy-trading 0/16, -100 %; every registered OOS
+  test KILL/INCONCLUSIVE; market log-loss beats the model by 19–57 %; bots reprice 134 s after the
+  observation, before public METAR.
+- Axiom (owner's project, ~50 tickets): real money -77 % (copy bot) and -0.81 SOL (manual); every
+  early-launch / wallet-following / deployer / attention / LP hypothesis NEGATIVE; skilled wallets'
+  profit sits in creation-slot entries (not imitable, AUC 0.40–0.44); one survivor (C03, +1.08 % at
+  0.01 SOL, Kish ~21) awaits its clean re-test on 10-28.
 
-Every rule that passed VALIDATION (daily trend longs, expiry fade, fear-buying) failed the holdout
-in the same way: 2023–24 was a bull regime with one drawdown, 2025–26 a bear/range regime. The
-rules were long-the-regime, not an edge. The short mirrors did the opposite (DON_S +15 %, FNG_S75
-+16 % in the holdout after failing both earlier periods). Nothing worked in both.
+## The owner's five priorities, against the evidence
 
-At the intraday level the constraint is arithmetic: with 10 USDT and 1 % risk the widest executable
-stop is 0.91 % and a round trip costs >= 0.2 R; no intraday family produced a gross edge above
-0.15 R; maker entries recover ~0.05 R of that.
+| # | Direction | Status |
+|---|---|---|
+| 1 | BTC liquidation / order-flow anomalies | Tested on public data (EXP-006, EXP-012/012b): nothing after costs. Liquidation prints are not public historically; only a forward collector on the VPS can create the dataset. |
+| 2 | BTC high-leverage system, positive after all costs | Phase 1–2: no family survives; the binding constraint is cost per R at 10 USDT. Not re-run (rule: no repackaging). |
+| 3 | Synchronised signals of profitable CEX traders | Bitget copy-trading endpoints need an API key (any account); Binance/Bybit leaderboards are closed to automation. No historical archive exists: forward collection only. The owner's own Polymarket version of this (Weather Quant #15/#19/#21: 266 wallets, 0 promoted) and Solana version (Axiom #59/AX82: skill not imitable) both failed. |
+| 4 | Solana new-token on-chain flows / smart money | Duplicates Axiom's ~50 tickets, all negative except C03 (pending 10-28). Not started here. |
+| 5 | GitHub strategies with real fills and reproducible data | Protocol applied in AUDIT-001; zero of four passed. Will apply to any new candidate the owner names. |
 
-## Social-media data (owner request)
-
-- Obtainable with history: Fear & Greed (2018–), CoinMetrics on-chain flows (2019–). Tested: EXP-009.
-- Not obtainable without paying or bypassing access controls: X/Twitter history (API is paid),
-  Reddit (403 for this egress), Google Trends / GDELT / Wikipedia pageviews (rate-limited for this
-  shared address; could work from the VPS).
-- Built: `b1k.intelligence.social_collector` — public Telegram channel previews (no login) plus
-  F&G, lexicon score, hourly timer (`ops/b1k-social.*`). Tested live: 73 messages from 4 channels.
-  It builds a forward dataset only; the first testable sample is months away.
-
-## Decisions only the owner can make (the loop is paused here on purpose)
-
-1. **Capital.** Research at 10 USDT has answered "no" ten times. 200–300 USDT changes which stops
-   and horizons are executable.
-2. **Universe.** The owner's earlier project found the only factors with out-of-sample evidence are
-   cross-sectional long/short books across many coins (flow, carry). This project is BTC-only by
-   charter. Widening it is a scope decision.
-3. **Paid data.** X API basic tier, or a sentiment vendor, if social signals are to be tested on
-   history rather than collected forward for months.
-4. **Forward collection on the VPS.** Deploying `b1k-social.timer` costs nothing and starts the
-   clock on a social dataset; it needs the VPS connection (network allowlist + a dedicated SSH key).
-
-Continuing to run new rule families on the same 2020–2026 data without one of these changes would be
-a search for the one in twenty that passes by chance; the registrations' failure criteria forbid it.
+## What would actually change the answer
+1. Capital (200–300 USDT) — changes feasible stops and cost share for every BTC family.
+2. Infrastructure the owner's projects lack: slot-0 / co-located execution (Axiom), sub-hourly
+   station observations (Weather Quant), liquidation stream + order book archive (this project).
+3. Scope: multi-coin cross-sectional books (the only factor family with OOS evidence, Smart Trader).
 
 ## Operations
-- Repository: github.com/shengchen424-sketch/btc1000x, 35 tests passing, data 0.3 GB (rebuildable),
-  alt-data snapshots in `evidence/alt/`.
-- No order has been or can be sent (`LIVE_TRADING` False; live path raises).
+- Repository: github.com/shengchen424-sketch/btc1000x, 36 tests passing.
+- No order has been or can be sent.
