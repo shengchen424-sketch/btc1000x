@@ -36,8 +36,8 @@ def grid():
 
 def git_head() -> str:
     root = PATHS.root
-    dirty = subprocess.run(["git", "-C", str(root), "status", "--porcelain", "--untracked-files=no"],
-                           capture_output=True, text=True).stdout.strip()
+    dirty = subprocess.run(["git", "-C", str(root), "status", "--porcelain", "--untracked-files=no",
+                            "--", ".", ":!data/manifests"], capture_output=True, text=True).stdout.strip()
     if dirty and "--allow-dirty" not in sys.argv:
         raise SystemExit("refusing to run on uncommitted code:\n" + dirty)
     return subprocess.run(["git", "-C", str(root), "rev-parse", "HEAD"], capture_output=True, text=True).stdout.strip()

@@ -208,32 +208,39 @@ def build_metrics(symbol: str = "BTCUSDT", start: str = "2021-06-01", end: str |
     end_d = date.fromisoformat(end) if end else datetime.now(timezone.utc).date() - timedelta(days=1)
     out_dir = PATHS.data_parquet / f"{symbol}_metrics_5m"
     out_dir.mkdir(parents=True, exist_ok=True)
+    from concurrent.futures import ThreadPoolExecutor
+
+    def fetch_day(d: date):
+        url = f"{BASE}/daily/metrics/{symbol}/{symbol}-metrics-{d.isoformat()}.zip"
+        r = _get(url)
+        now = datetime.now(timezone.utc).isoformat()
+        if r is None or r.status_code != 200:
+            return d, None, FetchRecord(url, -1 if r is None else r.status_code, None, 0, now, 0)
+        df = _read_zip_csv(r.content, None)
+        df["create_time"] = pd.to_datetime(df["create_time"], utc=True).astype("int64") // 10**6
+        df = df.rename(columns={"create_time": "open_time"}).drop(columns=["symbol"])
+        return d, df, FetchRecord(url, 200, hashlib.sha256(r.content).hexdigest(), len(r.content), now, len(df))
+
     missing = []
+    by_month: dict[str, list[date]] = {}
     d = date.fromisoformat(start)
-    frames, cur = [], d.strftime("%Y-%m")
     while d <= end_d:
-        ym = d.strftime("%Y-%m")
-        if ym != cur:
-            if frames:
-                pd.concat(frames).to_parquet(out_dir / f"{cur}.parquet", index=False)
-            frames, cur = [], ym
-        if not (out_dir / f"{ym}.parquet").exists():
-            url = f"{BASE}/daily/metrics/{symbol}/{symbol}-metrics-{d.isoformat()}.zip"
-            r = _get(url)
-            now = datetime.now(timezone.utc).isoformat()
-            if r is None or r.status_code != 200:
-                missing.append(d.isoformat())
-                _manifest_append("metrics", FetchRecord(url, -1 if r is None else r.status_code, None, 0, now, 0))
-            else:
-                df = _read_zip_csv(r.content, None)
-                df["create_time"] = pd.to_datetime(df["create_time"], utc=True).astype("int64") // 10**6
-                df = df.rename(columns={"create_time": "open_time"}).drop(columns=["symbol"])
-                frames.append(df)
-                _manifest_append("metrics", FetchRecord(url, 200, hashlib.sha256(r.content).hexdigest(),
-                                                        len(r.content), now, len(df)))
+        by_month.setdefault(d.strftime("%Y-%m"), []).append(d)
         d += timedelta(days=1)
-    if frames:
-        pd.concat(frames).to_parquet(out_dir / f"{cur}.parquet", index=False)
+    for ym, days in by_month.items():
+        if (out_dir / f"{ym}.parquet").exists():
+            continue
+        with ThreadPoolExecutor(max_workers=8) as ex:
+            results = list(ex.map(fetch_day, days))
+        frames = []
+        for dd, df, rec in results:
+            _manifest_append("metrics", rec)
+            if df is None:
+                missing.append(dd.isoformat())
+            else:
+                frames.append(df)
+        if frames:
+            pd.concat(frames).sort_values("open_time").to_parquet(out_dir / f"{ym}.parquet", index=False)
     (out_dir / "MISSING.json").write_text(json.dumps(missing))
     return out_dir
 
