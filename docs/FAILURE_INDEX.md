@@ -1,6 +1,8 @@
 # Failure index — hypotheses already tested, by profit mechanism
 
-Rule (owner, 2026-10-14): before any new experiment is registered, search this index. A new registration
+Rule (owner, 2026-10-14): before any new experiment is registered, search this index. Scope (review
+2026-10-15): an entry closes the SPECIFIC definition tested, not the market or the mechanism family;
+re-opening needs new data, a new execution condition, or a demonstrated implementation defect, stated explicitly. A new registration
 must state which entry it is closest to and what is genuinely new (data, horizon, execution condition,
 or mechanism), and why that would change the earlier failure's cause. Renamed indicators or re-tuned
 parameters of a listed entry are refused.
@@ -32,7 +34,7 @@ parameters of a listed entry are refused.
 | Solana new-token early entry, deployer/operator history, attention, right-tail bags | Axiom #27–#77, AX66–AX88 | Pump.fun / PumpSwap | all negative except C03 (pending 10-28) | profit only in creation slot; costs mis-modelled 13x |
 
 | Regime gates / crowding filters as overlays on the flow book (BTC near-high, ETH/BTC, funding crowding) | EXP-013 | 30 perps weekly, 2025–26 paired | 0/5; CIs ±10–20 %/yr | tail-driven book makes 638 days underpowered; gates remove the winning tail |
-| 14-day BTC-hedged residual momentum book (same engine as flow book) | EXP-014 | 30 perps weekly | standalone significant both windows (Sharpe 1.7); corr 0.47 with flow | not independent; DD 33 % |
+| 14-day BTC-hedged residual momentum book (same engine as flow book) | EXP-014 | 30 perps weekly | NOT A FAILURE: significant in both windows after Bonferroni (Sharpe 1.7); corr 0.47–0.64 with flow | listed as 'historical evidence, diversification gate not passed'; portfolio value unproven |
 | Flow + residual-momentum blended ranking | EXP-015 | 30 perps weekly, paired 2025–26 | +21 %/yr point estimate, p 0.08, DD doubles | underpowered; concentrates the tail |
 | Funding-carry rank book | EXP-014 control; ST batch 7 D3 | 30 perps | 2023–24 Sharpe 1.4, 2025–26 -0.05 | carry decayed since 2025 |
 
