@@ -25,7 +25,7 @@ parameters of a listed entry are refused.
 | 5-minute taker-flow imbalance extremes (continuation and reversal) | EXP-012/012b | BTC 15–60 min | gross within ±0.02 R | no direction after flow extremes; cost 0.28 R |
 | Crash rebound (coin -10 %, BTC -5 %, 24h) | ST batch 1–5 | 10 perps | p 0.05, unvalidated | found after looking; left tail |
 | Cross-sectional 7-day momentum book | ST batch 7 D1 | 30 perps weekly | FAIL (Sharpe 0.4) | top-3 days carry it |
-| Cross-sectional taker-flow book (5+5 weekly) | ST batch 7–9 **PROVISIONAL**, live since 2026-10-02 | 30 perps weekly | OOS +65–80 %/yr; see ST-AUDIT-001 | right-tail concentrated; start-day sensitive |
+| Cross-sectional taker-flow book (5+5 weekly) | ST batch 7–9 **PROVISIONAL**, live since 2026-10-02; ST-AUDIT-001/002/002v2/003 | 30 perps weekly | research +79 %/yr; Bitget-executable historical scenario +32–42 %/yr median (worst path +25–33 %, DD 22–28 %); live 13 d −2.78 % (reconciled) | right-tail concentrated (top 1 % = 89 % PnL, 28 % of it on coins not on Bitget at the time); start-day sensitive |
 | Funding-carry book, composite books | ST batch 7 D3–D5 | 30 perps | provisional, weaker than flow | carry Sharpe fell since 2024 |
 | Maker quoting / passive LP | Weather Quant #25 (48 variants); Axiom AX85 (24 strata) | Polymarket; Solana | all negative | adverse selection 1.5–4x spread |
 | Copy-trading profitable wallets | Weather Quant #5/#12/#15/#19/#21 (266 wallets); Axiom #59, AX82 | Polymarket; Solana | live 0/16; -77 %; 0 promoted | skill not imitable; profit in creation slot / early entry |

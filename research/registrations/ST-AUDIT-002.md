@@ -42,3 +42,13 @@ at entry (yes/no) and placeable at 105 USDT (yes/no).
 ## What this cannot show
 Fill quality in small coins at the daily close (needs the live fills), and Bitget's own price series
 (Binance proxy; parity 3–6 bps on majors, unknown on small coins).
+
+## Amendment v2 (2026-10-15, after ST-AUDIT-003, before the v2 run)
+ST-AUDIT-003 (VPS, read-only) showed the live executor differs from the rules registered above in three
+places: untradeable coins are removed BEFORE ranking (then first 5 placeable of the remaining top-10);
+quantities are rounded to the NEAREST lot with a ±50 % tolerance (not floored); a same-direction
+position is kept unless the size gap is >= 5.5 USDT. v2 copies these three rules; everything else is
+unchanged. Outputs to `research/results/ST-AUDIT-002v2/`. Reporting label fixed in advance: "historical
+scenario under today's contract rules and Binance funding", never "verified Bitget return"; CONS is a
+sensitivity case, not a lower bound. Still not modelled: next-day 00:35 execution, Bitget funding,
+non-ASCII contracts (absent from the panel).

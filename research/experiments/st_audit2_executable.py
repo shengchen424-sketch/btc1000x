@@ -1,4 +1,6 @@
-"""ST-AUDIT-002: Bitget-executable replay under today's contract rules, with historical eligibility scenarios.
+"""ST-AUDIT-002 v2: Bitget-executable replay under today's contract rules, with historical eligibility scenarios.
+v2 (after ST-AUDIT-003): selection, rounding and band rules copied from the live executor (filter before ranking,
+nearest lot ±50 %, 5.5 USDT band). Non-ASCII tickers are absent from the panel by construction (fetch filter).
 
 Eligibility evidence classes (evidence/exchange/bitget_listing_dates.json):
   EARLIEST-QUOTE : first daily candle Bitget's history-candles serves (paged to exhaustion; no retention
@@ -27,7 +29,7 @@ from exp015_blend import z  # noqa: E402
 
 from b1k.config import PATHS
 
-OUT = PATHS.results / "ST-AUDIT-002"
+OUT = PATHS.results / "ST-AUDIT-002v2"
 FEE = 0.0006 + 0.0003
 START, END = "2023-01-01", "2026-09-30"
 CAPITALS = [105.0, 200.0, 300.0, 500.0, 1000.0]
@@ -58,10 +60,10 @@ def placeable(sym, price, target_usdt, specs, listing, date):
     mn, step, min_usdt = specs.get(sym, (None, None, None))
     if mn is None:
         return 0.0, "unlisted"  # no current spec = not on Bitget today
-    qty = np.floor(target_usdt / price / step) * step
-    if qty < mn or qty * price < min_usdt:
+    qty = round(target_usdt / price / step) * step          # live: nearest lot (rg/book/core.py Lots.qty)
+    if qty <= 0 or qty < mn or qty * price < min_usdt:
         return 0.0, "min_order"
-    if qty * price < 0.5 * target_usdt:
+    if abs(qty * price / target_usdt - 1.0) > 0.5:           # live: MAX_SIZE_ERROR 50 % either side
         return 0.0, "rounding"
     return qty, "ok"
 
@@ -95,6 +97,12 @@ def simulate_lots(px, score, funding, equity0, specs, listing, offset):
         if due and equity >= MIN_TRADABLE_EQUITY:
             f = score.loc[d].dropna()
             if len(f) >= 15:
+                # live rule (rg/book/paper.py targets): drop symbols not tradable on the venue BEFORE ranking
+                tradable = [s for s in f.index if s in listing and listing[s] <= d and s in specs]
+                skips["unlisted"] += len(f) - len(tradable)
+                f = f[tradable]
+                if len(f) < 15:
+                    f = pd.Series(dtype=float)
                 ranked = f.sort_values(ascending=False)
                 target = equity * 0.1
                 longs, shorts, newq = [], [], pd.Series(0.0, index=px.columns)
@@ -116,8 +124,13 @@ def simulate_lots(px, score, funding, equity0, specs, listing, offset):
                         shorts.append(s); newq[s] = -q
                     else:
                         skips[why] += 1
+                # live band (BAND_USDT 5.5): a same-direction position is kept unless the size gap is >= 5.5 USDT
+                for s in px.columns[(qty != 0) & (newq != 0)]:
+                    if np.sign(qty[s]) == np.sign(newq[s]) and abs(qty[s] - newq[s]) * p[s] < 5.5:
+                        newq[s] = qty[s]
                 traded = float(((newq - qty) * p).abs().fillna(0.0).sum()); cost += FEE * traded
-                qty = newq; entry_notional = (qty * p).fillna(0.0)
+                qty = newq
+                entry_notional = (qty * p).fillna(0.0)  # trim reference reset at every rebalance, kept positions included (approximation)
                 L = float(entry_notional[entry_notional > 0].sum()); S_ = float(-entry_notional[entry_notional < 0].sum())
                 rebs.append({"date": d, "long_exp": L / equity, "short_exp": S_ / equity, "net_exp": (L - S_) / equity,
                              "cash_frac": 1 - (L + S_) / equity, "n_long": len(longs), "n_short": len(shorts)})

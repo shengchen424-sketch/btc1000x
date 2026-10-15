@@ -1,4 +1,4 @@
-# BTC 1000X — Phase 2 status (2026-10-14 ~14:30 UTC, after round 4)
+# BTC 1000X — Phase 2 status (2026-10-15 ~14:00 UTC, after the executability audits)
 
 ## Scoreboard (this repository)
 
@@ -36,6 +36,17 @@ Twelve families, 105 trials, three holdout looks. Shadow registries empty.
 - EXP-013: five incremental overlays, paired B − A on 2025–26: 0 adopted (CIs ±10–20 %/yr).
 - EXP-011 closed: Polymarket temperature market calibrated (Brier 0.058); ensemble archive unavailable.
 - EXP-014: residual momentum (14d) significant standalone (Sharpe 1.7 both windows) but corr 0.47 with the flow book; carry decayed. EXP-015: flow+RM14 blend +21 %/yr point estimate, p 0.08, DD doubles: not adopted.
+- ST-AUDIT-002 / 002v2: Bitget-executable replay of A, RM14, BLEND25 at 105–1,000 USDT with historical
+  listing evidence (146 EARLIEST-QUOTE, 34 ABSENT of 180 traded symbols) and, in v2, the live executor's
+  selection/rounding/band rules. Flow book: **+32 to +42 %/yr median historical scenario** (worst path
+  +25 to +33 %, DD 22–28 %) vs +79 % research; the gap is coins not on Bitget when the signal fired (TRB
+  2023, AKE 2026, REEF/BLZ/BNX = 28 % of top-85 profit). Rules matter only at 105 USDT (v1 floor
+  rounding -> ~300 USDT minimum was an artefact; live nearest-lot rule fully invests 105 USDT). Label:
+  historical scenario under today's contract rules and Binance funding, not a verified return.
+- ST-AUDIT-003 (VPS session, read-only, redacted pack in Smart-trader `docs/audit/ST-AUDIT-003/`): account
+  identity reconciled to 0.0000 residual; 27 live orders all full fills at 6.0 bps, ~0 slippage; live
+  2026-10-01..10-14 −2.78 % (13 days, not annualised); three executor-vs-replay rule differences found
+  and copied into 002v2; four logging gaps on the production side listed, nothing changed.
 - `docs/FAILURE_INDEX.md` created: 26 mechanism families with their failure causes.
 
 ## The owner's five priorities, against the evidence
@@ -56,4 +67,5 @@ Twelve families, 105 trials, three holdout looks. Shadow registries empty.
 
 ## Operations
 - Repository: github.com/shengchen424-sketch/btc1000x, 36 tests passing.
-- No order has been or can be sent.
+- No order has been or can be sent from this repository. The Smart Trader book runs live at 105 USDT on the VPS (owner's decision);
+  no added capital, no executor change, no new strategy until the 2026-11-27 forward checkpoint.

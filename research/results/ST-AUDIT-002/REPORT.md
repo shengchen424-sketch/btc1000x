@@ -1,6 +1,6 @@
 # ST-AUDIT-002 — Bitget-executable replay: the research return roughly halves, and listing eligibility, not capital, is the main cause
 
-Run 2026-10-15 on commit `09e411a`. Historical executability of the flow book (A), RM14 and BLEND25,
+**Superseded on rule fidelity by `../ST-AUDIT-002v2/REPORT.md` (live executor rules: filter before ranking, nearest lot ±50 %, 5.5 USDT band). Kept as the floor-rounding variant.** Run 2026-10-15 on commit `09e411a`. Historical executability of the flow book (A), RM14 and BLEND25,
 evaluated UNDER TODAY'S CONTRACT RULES (step, minimum) with historical eligibility scenarios.
 Not a live reproduction: no VPS fills, orders or rejections were available (see §5).
 
@@ -60,7 +60,7 @@ At 105 USDT the min-order skips (193 per path) add little further loss (+38 % vs
 skipped slot is refilled by the next-ranked placeable coin. What the small account does change is
 balance: with a skipped slot the book's net exposure reaches ±0.30 of equity at 105 USDT against
 ±0.12 at 500+ (average net exposure -0.02 everywhere). Minimum executable capital for a balanced
-book under today's rules is therefore ~300 USDT (min-order skips fall to 2 per path); this is not a
+book under today's rules WITH FLOOR ROUNDING is therefore ~300 USDT (corrected in v2: with the live nearest-lot rule 105 USDT is fully invested) (min-order skips fall to 2 per path); this is not a
 capacity ceiling, and returns do not rise with capital beyond that.
 
 ## 4. What this means
@@ -70,8 +70,8 @@ capacity ceiling, and returns do not rise with capital beyond that.
    when the signal fired (TRB 2023, AKE mid-2026, REEF/BLZ/BNX), i.e. the right tail.
 2. RM14 and BLEND25 keep more of their return under execution but carry 45–60 % drawdowns; nothing
    here changes their status (historical evidence, not adopted).
-3. Live record so far (8 cycles, +1.27 % NAV) is consistent with the executable, not the research,
-   series, but 4 days say nothing.
+3. Live record so far: "8 cycles, +1.27 % NAV" = 8 live passes 10-02..10-06 (2 with orders). Per ST-AUDIT-003
+   the account is −2.78 % from the 10-01 close to 10-14 (identity reconciled, residual 0). 13 days say nothing.
 
 ## 5. Not covered (needs the VPS evidence pack, read-only and redacted)
 Per-fill slippage on small coins, orders rejected by Bitget, target-vs-filled positions per
