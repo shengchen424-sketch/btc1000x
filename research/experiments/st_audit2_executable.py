@@ -204,11 +204,19 @@ def main():
     research = {"A_flow": pd.read_parquet(PATHS.results / "EXP-013" / "daily_A.parquet")["A"],
                 "RM14": pd.read_parquet(PATHS.results / "EXP-014" / "daily_RM14.parquet")["RM14"],
                 "BLEND25": pd.read_parquet(PATHS.results / "EXP-015" / "daily_BLEND25.parquet")["BLEND25"]}
+    # speed: keep only symbols that are ever candidates (score non-null) in the window
+    keep = sorted({s for sc in books.values() for s in sc.loc[START:END].columns[sc.loc[START:END].notna().any()]} | {"BTCUSDT"})
+    px = px[keep]; books = {k: v[keep] for k, v in books.items()}
+    if funding is not None:
+        funding = funding.reindex(columns=keep)
+    scen_arg = [a for a in sys.argv[1:] if a in ("OPT", "CONS")]
     rows = []
     for scen, buf in [("OPT", 0), ("CONS", 30)]:
+        if scen_arg and scen not in scen_arg:
+            continue
         listing, cls = load_listing(buf)
         rows += run(books, research, px, funding, specs, scen, listing, cls)
-    pd.DataFrame(rows).to_csv(OUT / "executable_table.csv", index=False)
+        pd.DataFrame(rows).to_csv(OUT / f"executable_table_{'_'.join(scen_arg) if scen_arg else 'all'}.csv", index=False)
     listing, cls = load_listing(0)
     top85_table(specs, listing, cls)
     pos = pd.read_parquet(PATHS.results / "ST-AUDIT-001" / "positions.parquet"); pos["pnl"] = pos.ret * 0.1
