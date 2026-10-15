@@ -4,5 +4,1080 @@
   "first_daily_bar": "2024-03-08",
   "bitget_symbol": "1000BONKUSDT",
   "complete": true
- }
+ },
+ "1000FLOKIUSDT": {
+  "first_daily_bar_ms": 1683129600000,
+  "first_daily_bar": "2023-05-03",
+  "bitget_symbol": "FLOKIUSDT",
+  "complete": true
+ },
+ "1000LUNCUSDT": {
+  "first_daily_bar_ms": 1663257600000,
+  "first_daily_bar": "2022-09-15",
+  "bitget_symbol": "LUNCUSDT",
+  "complete": true
+ },
+ "1000PEPEUSDT": {
+  "first_daily_bar_ms": 1683216000000,
+  "first_daily_bar": "2023-05-04",
+  "bitget_symbol": "PEPEUSDT",
+  "complete": true
+ },
+ "1000RATSUSDT": {
+  "first_daily_bar_ms": 1702656000000,
+  "first_daily_bar": "2023-12-15",
+  "bitget_symbol": "1000RATSUSDT",
+  "complete": true
+ },
+ "1000SATSUSDT": {
+  "first_daily_bar_ms": 1702396800000,
+  "first_daily_bar": "2023-12-12",
+  "bitget_symbol": "1000SATSUSDT",
+  "complete": true
+ },
+ "1000SHIBUSDT": {
+  "first_daily_bar_ms": 1637856000000,
+  "first_daily_bar": "2021-11-25",
+  "bitget_symbol": "SHIBUSDT",
+  "complete": true
+ },
+ "AAVEUSDT": {
+  "first_daily_bar_ms": 1615824000000,
+  "first_daily_bar": "2021-03-15",
+  "bitget_symbol": "AAVEUSDT",
+  "complete": true
+ },
+ "ACEUSDT": {
+  "first_daily_bar_ms": 1702915200000,
+  "first_daily_bar": "2023-12-18",
+  "bitget_symbol": "ACEUSDT",
+  "complete": true
+ },
+ "ACHUSDT": {
+  "first_daily_bar_ms": 1677513600000,
+  "first_daily_bar": "2023-02-27",
+  "bitget_symbol": "ACHUSDT",
+  "complete": true
+ },
+ "ADAUSDT": {
+  "first_daily_bar_ms": 1597766400000,
+  "first_daily_bar": "2020-08-18",
+  "bitget_symbol": "ADAUSDT",
+  "complete": true
+ },
+ "AGIXUSDT": {
+  "first_daily_bar_ms": null,
+  "first_daily_bar": null,
+  "bitget_symbol": null,
+  "complete": true
+ },
+ "AGLDUSDT": {
+  "first_daily_bar_ms": 1689609600000,
+  "first_daily_bar": "2023-07-17",
+  "bitget_symbol": "AGLDUSDT",
+  "complete": true
+ },
+ "AKEUSDT": {
+  "first_daily_bar_ms": 1788278400000,
+  "first_daily_bar": "2026-09-01",
+  "bitget_symbol": "AKEUSDT",
+  "complete": true
+ },
+ "ALLOUSDT": {
+  "first_daily_bar_ms": 1762790400000,
+  "first_daily_bar": "2025-11-10",
+  "bitget_symbol": "ALLOUSDT",
+  "complete": true
+ },
+ "ALPHAUSDT": {
+  "first_daily_bar_ms": null,
+  "first_daily_bar": null,
+  "bitget_symbol": null,
+  "complete": true
+ },
+ "AMBUSDT": {
+  "first_daily_bar_ms": null,
+  "first_daily_bar": null,
+  "bitget_symbol": null,
+  "complete": true
+ },
+ "APEUSDT": {
+  "first_daily_bar_ms": 1649347200000,
+  "first_daily_bar": "2022-04-07",
+  "bitget_symbol": "APEUSDT",
+  "complete": true
+ },
+ "API3USDT": {
+  "first_daily_bar_ms": 1660492800000,
+  "first_daily_bar": "2022-08-14",
+  "bitget_symbol": "API3USDT",
+  "complete": true
+ },
+ "APTUSDT": {
+  "first_daily_bar_ms": 1666108800000,
+  "first_daily_bar": "2022-10-18",
+  "bitget_symbol": "APTUSDT",
+  "complete": true
+ },
+ "ARBUSDT": {
+  "first_daily_bar_ms": 1679500800000,
+  "first_daily_bar": "2023-03-22",
+  "bitget_symbol": "ARBUSDT",
+  "complete": true
+ },
+ "ARIAUSDT": {
+  "first_daily_bar_ms": 1756828800000,
+  "first_daily_bar": "2025-09-02",
+  "bitget_symbol": "ARIAUSDT",
+  "complete": true
+ },
+ "ARKMUSDT": {
+  "first_daily_bar_ms": 1690560000000,
+  "first_daily_bar": "2023-07-28",
+  "bitget_symbol": "ARKMUSDT",
+  "complete": true
+ },
+ "ARPAUSDT": {
+  "first_daily_bar_ms": 1681833600000,
+  "first_daily_bar": "2023-04-18",
+  "bitget_symbol": "ARPAUSDT",
+  "complete": true
+ },
+ "ASTERUSDT": {
+  "first_daily_bar_ms": 1758211200000,
+  "first_daily_bar": "2025-09-18",
+  "bitget_symbol": "ASTERUSDT",
+  "complete": true
+ },
+ "ATOMUSDT": {
+  "first_daily_bar_ms": 1603900800000,
+  "first_daily_bar": "2020-10-28",
+  "bitget_symbol": "ATOMUSDT",
+  "complete": true
+ },
+ "AUCTIONUSDT": {
+  "first_daily_bar_ms": 1739721600000,
+  "first_daily_bar": "2025-02-16",
+  "bitget_symbol": "AUCTIONUSDT",
+  "complete": true
+ },
+ "AVAXUSDT": {
+  "first_daily_bar_ms": 1632844800000,
+  "first_daily_bar": "2021-09-28",
+  "bitget_symbol": "AVAXUSDT",
+  "complete": true
+ },
+ "AXSUSDT": {
+  "first_daily_bar_ms": 1632326400000,
+  "first_daily_bar": "2021-09-22",
+  "bitget_symbol": "AXSUSDT",
+  "complete": true
+ },
+ "BAKEUSDT": {
+  "first_daily_bar_ms": null,
+  "first_daily_bar": null,
+  "bitget_symbol": null,
+  "complete": true
+ },
+ "BANKUSDT": {
+  "first_daily_bar_ms": 1744905600000,
+  "first_daily_bar": "2025-04-17",
+  "bitget_symbol": "BANKUSDT",
+  "complete": true
+ },
+ "BCHUSDT": {
+  "first_daily_bar_ms": 1569254400000,
+  "first_daily_bar": "2019-09-23",
+  "bitget_symbol": "BCHUSDT",
+  "complete": true
+ },
+ "BEATUSDT": {
+  "first_daily_bar_ms": 1762876800000,
+  "first_daily_bar": "2025-11-11",
+  "bitget_symbol": "BEATUSDT",
+  "complete": true
+ },
+ "BERAUSDT": {
+  "first_daily_bar_ms": 1738771200000,
+  "first_daily_bar": "2025-02-05",
+  "bitget_symbol": "BERAUSDT",
+  "complete": true
+ },
+ "BIGTIMEUSDT": {
+  "first_daily_bar_ms": 1697040000000,
+  "first_daily_bar": "2023-10-11",
+  "bitget_symbol": "BIGTIMEUSDT",
+  "complete": true
+ },
+ "BIOUSDT": {
+  "first_daily_bar_ms": 1735833600000,
+  "first_daily_bar": "2025-01-02",
+  "bitget_symbol": "BIOUSDT",
+  "complete": true
+ },
+ "BLURUSDT": {
+  "first_daily_bar_ms": 1676908800000,
+  "first_daily_bar": "2023-02-20",
+  "bitget_symbol": "BLURUSDT",
+  "complete": true
+ },
+ "BLZUSDT": {
+  "first_daily_bar_ms": null,
+  "first_daily_bar": null,
+  "bitget_symbol": null,
+  "complete": true
+ },
+ "BNBUSDT": {
+  "first_daily_bar_ms": 1562601600000,
+  "first_daily_bar": "2019-07-08",
+  "bitget_symbol": "BNBUSDT",
+  "complete": true
+ },
+ "BNXUSDT": {
+  "first_daily_bar_ms": null,
+  "first_daily_bar": null,
+  "bitget_symbol": null,
+  "complete": true
+ },
+ "BOMEUSDT": {
+  "first_daily_bar_ms": 1710777600000,
+  "first_daily_bar": "2024-03-18",
+  "bitget_symbol": "BOMEUSDT",
+  "complete": true
+ },
+ "BTCUSDT": {
+  "first_daily_bar_ms": 1562688000000,
+  "first_daily_bar": "2019-07-09",
+  "bitget_symbol": "BTCUSDT",
+  "complete": true
+ },
+ "BZUSDT": {
+  "first_daily_bar_ms": 1774972800000,
+  "first_daily_bar": "2026-03-31",
+  "bitget_symbol": "BZUSDT",
+  "complete": true
+ },
+ "CFXUSDT": {
+  "first_daily_bar_ms": 1676995200000,
+  "first_daily_bar": "2023-02-21",
+  "bitget_symbol": "CFXUSDT",
+  "complete": true
+ },
+ "CHZUSDT": {
+  "first_daily_bar_ms": 1650556800000,
+  "first_daily_bar": "2022-04-21",
+  "bitget_symbol": "CHZUSDT",
+  "complete": true
+ },
+ "CKBUSDT": {
+  "first_daily_bar_ms": 1679673600000,
+  "first_daily_bar": "2023-03-24",
+  "bitget_symbol": "CKBUSDT",
+  "complete": true
+ },
+ "CLUSDT": {
+  "first_daily_bar_ms": 1773590400000,
+  "first_daily_bar": "2026-03-15",
+  "bitget_symbol": "CLUSDT",
+  "complete": true
+ },
+ "COMPUSDT": {
+  "first_daily_bar_ms": 1657209600000,
+  "first_daily_bar": "2022-07-07",
+  "bitget_symbol": "COMPUSDT",
+  "complete": true
+ },
+ "CRCLUSDT": {
+  "first_daily_bar_ms": 1755532800000,
+  "first_daily_bar": "2025-08-18",
+  "bitget_symbol": "CRCLUSDT",
+  "complete": true
+ },
+ "CRVUSDT": {
+  "first_daily_bar_ms": 1639584000000,
+  "first_daily_bar": "2021-12-15",
+  "bitget_symbol": "CRVUSDT",
+  "complete": true
+ },
+ "CTSIUSDT": {
+  "first_daily_bar_ms": 1729785600000,
+  "first_daily_bar": "2024-10-24",
+  "bitget_symbol": "CTSIUSDT",
+  "complete": true
+ },
+ "CYSUSDT": {
+  "first_daily_bar_ms": 1765468800000,
+  "first_daily_bar": "2025-12-11",
+  "bitget_symbol": "CYSUSDT",
+  "complete": true
+ },
+ "DASHUSDT": {
+  "first_daily_bar_ms": 1762185600000,
+  "first_daily_bar": "2025-11-03",
+  "bitget_symbol": "DASHUSDT",
+  "complete": true
+ },
+ "DEXEUSDT": {
+  "first_daily_bar_ms": 1734969600000,
+  "first_daily_bar": "2024-12-23",
+  "bitget_symbol": "DEXEUSDT",
+  "complete": true
+ },
+ "DOGEUSDT": {
+  "first_daily_bar_ms": 1621526400000,
+  "first_daily_bar": "2021-05-20",
+  "bitget_symbol": "DOGEUSDT",
+  "complete": true
+ },
+ "DOTUSDT": {
+  "first_daily_bar_ms": 1598803200000,
+  "first_daily_bar": "2020-08-30",
+  "bitget_symbol": "DOTUSDT",
+  "complete": true
+ },
+ "DYDXUSDT": {
+  "first_daily_bar_ms": 1639584000000,
+  "first_daily_bar": "2021-12-15",
+  "bitget_symbol": "DYDXUSDT",
+  "complete": true
+ },
+ "EIGENUSDT": {
+  "first_daily_bar_ms": 1727712000000,
+  "first_daily_bar": "2024-09-30",
+  "bitget_symbol": "EIGENUSDT",
+  "complete": true
+ },
+ "ENAUSDT": {
+  "first_daily_bar_ms": 1712160000000,
+  "first_daily_bar": "2024-04-03",
+  "bitget_symbol": "ENAUSDT",
+  "complete": true
+ },
+ "ENSUSDT": {
+  "first_daily_bar_ms": 1652976000000,
+  "first_daily_bar": "2022-05-19",
+  "bitget_symbol": "ENSUSDT",
+  "complete": true
+ },
+ "EOSUSDT": {
+  "first_daily_bar_ms": null,
+  "first_daily_bar": null,
+  "bitget_symbol": null,
+  "complete": true
+ },
+ "ESPORTSUSDT": {
+  "first_daily_bar_ms": null,
+  "first_daily_bar": null,
+  "bitget_symbol": null,
+  "complete": true
+ },
+ "ETCUSDT": {
+  "first_daily_bar_ms": 1572019200000,
+  "first_daily_bar": "2019-10-25",
+  "bitget_symbol": "ETCUSDT",
+  "complete": true
+ },
+ "ETHFIUSDT": {
+  "first_daily_bar_ms": 1711036800000,
+  "first_daily_bar": "2024-03-21",
+  "bitget_symbol": "ETHFIUSDT",
+  "complete": true
+ },
+ "ETHUSDT": {
+  "first_daily_bar_ms": 1565366400000,
+  "first_daily_bar": "2019-08-09",
+  "bitget_symbol": "ETHUSDT",
+  "complete": true
+ },
+ "EWYUSDT": {
+  "first_daily_bar_ms": 1773676800000,
+  "first_daily_bar": "2026-03-16",
+  "bitget_symbol": "EWYUSDT",
+  "complete": true
+ },
+ "FARTCOINUSDT": {
+  "first_daily_bar_ms": 1734710400000,
+  "first_daily_bar": "2024-12-20",
+  "bitget_symbol": "FARTCOINUSDT",
+  "complete": true
+ },
+ "FETUSDT": {
+  "first_daily_bar_ms": 1677686400000,
+  "first_daily_bar": "2023-03-01",
+  "bitget_symbol": "FETUSDT",
+  "complete": true
+ },
+ "FILUSDT": {
+  "first_daily_bar_ms": 1603036800000,
+  "first_daily_bar": "2020-10-18",
+  "bitget_symbol": "FILUSDT",
+  "complete": true
+ },
+ "FLMUSDT": {
+  "first_daily_bar_ms": null,
+  "first_daily_bar": null,
+  "bitget_symbol": null,
+  "complete": true
+ },
+ "FTMUSDT": {
+  "first_daily_bar_ms": null,
+  "first_daily_bar": null,
+  "bitget_symbol": null,
+  "complete": true
+ },
+ "GALAUSDT": {
+  "first_daily_bar_ms": 1638892800000,
+  "first_daily_bar": "2021-12-07",
+  "bitget_symbol": "GALAUSDT",
+  "complete": true
+ },
+ "GMTUSDT": {
+  "first_daily_bar_ms": 1648742400000,
+  "first_daily_bar": "2022-03-31",
+  "bitget_symbol": "GMTUSDT",
+  "complete": true
+ },
+ "GRTUSDT": {
+  "first_daily_bar_ms": 1660492800000,
+  "first_daily_bar": "2022-08-14",
+  "bitget_symbol": "GRTUSDT",
+  "complete": true
+ },
+ "HBARUSDT": {
+  "first_daily_bar_ms": 1678982400000,
+  "first_daily_bar": "2023-03-16",
+  "bitget_symbol": "HBARUSDT",
+  "complete": true
+ },
+ "HIGHUSDT": {
+  "first_daily_bar_ms": null,
+  "first_daily_bar": null,
+  "bitget_symbol": null,
+  "complete": true
+ },
+ "HUSDT": {
+  "first_daily_bar_ms": 1750780800000,
+  "first_daily_bar": "2025-06-24",
+  "bitget_symbol": "HUSDT",
+  "complete": true
+ },
+ "HYPEUSDT": {
+  "first_daily_bar_ms": 1734537600000,
+  "first_daily_bar": "2024-12-18",
+  "bitget_symbol": "HYPEUSDT",
+  "complete": true
+ },
+ "ICPUSDT": {
+  "first_daily_bar_ms": 1621958400000,
+  "first_daily_bar": "2021-05-25",
+  "bitget_symbol": "ICPUSDT",
+  "complete": true
+ },
+ "INJUSDT": {
+  "first_daily_bar_ms": 1678982400000,
+  "first_daily_bar": "2023-03-16",
+  "bitget_symbol": "INJUSDT",
+  "complete": true
+ },
+ "INTCUSDT": {
+  "first_daily_bar_ms": 1757260800000,
+  "first_daily_bar": "2025-09-07",
+  "bitget_symbol": "INTCUSDT",
+  "complete": true
+ },
+ "IPUSDT": {
+  "first_daily_bar_ms": null,
+  "first_daily_bar": null,
+  "bitget_symbol": null,
+  "complete": true
+ },
+ "JASMYUSDT": {
+  "first_daily_bar_ms": 1663776000000,
+  "first_daily_bar": "2022-09-21",
+  "bitget_symbol": "JASMYUSDT",
+  "complete": true
+ },
+ "JTOUSDT": {
+  "first_daily_bar_ms": 1702310400000,
+  "first_daily_bar": "2023-12-11",
+  "bitget_symbol": "JTOUSDT",
+  "complete": true
+ },
+ "JUPUSDT": {
+  "first_daily_bar_ms": 1706716800000,
+  "first_daily_bar": "2024-01-31",
+  "bitget_symbol": "JUPUSDT",
+  "complete": true
+ },
+ "KAITOUSDT": {
+  "first_daily_bar_ms": 1739980800000,
+  "first_daily_bar": "2025-02-19",
+  "bitget_symbol": "KAITOUSDT",
+  "complete": true
+ },
+ "KAVAUSDT": {
+  "first_daily_bar_ms": 1652112000000,
+  "first_daily_bar": "2022-05-09",
+  "bitget_symbol": "KAVAUSDT",
+  "complete": true
+ },
+ "LABUSDT": {
+  "first_daily_bar_ms": 1760630400000,
+  "first_daily_bar": "2025-10-16",
+  "bitget_symbol": "LABUSDT",
+  "complete": true
+ },
+ "LDOUSDT": {
+  "first_daily_bar_ms": 1676476800000,
+  "first_daily_bar": "2023-02-15",
+  "bitget_symbol": "LDOUSDT",
+  "complete": true
+ },
+ "LEVERUSDT": {
+  "first_daily_bar_ms": null,
+  "first_daily_bar": null,
+  "bitget_symbol": null,
+  "complete": true
+ },
+ "LINAUSDT": {
+  "first_daily_bar_ms": null,
+  "first_daily_bar": null,
+  "bitget_symbol": null,
+  "complete": true
+ },
+ "LINKUSDT": {
+  "first_daily_bar_ms": 1596556800000,
+  "first_daily_bar": "2020-08-04",
+  "bitget_symbol": "LINKUSDT",
+  "complete": true
+ },
+ "LITUSDT": {
+  "first_daily_bar_ms": 1766505600000,
+  "first_daily_bar": "2025-12-23",
+  "bitget_symbol": "LITUSDT",
+  "complete": true
+ },
+ "LPTUSDT": {
+  "first_daily_bar_ms": 1691596800000,
+  "first_daily_bar": "2023-08-09",
+  "bitget_symbol": "LPTUSDT",
+  "complete": true
+ },
+ "LQTYUSDT": {
+  "first_daily_bar_ms": 1678809600000,
+  "first_daily_bar": "2023-03-14",
+  "bitget_symbol": "LQTYUSDT",
+  "complete": true
+ },
+ "LTCUSDT": {
+  "first_daily_bar_ms": 1565366400000,
+  "first_daily_bar": "2019-08-09",
+  "bitget_symbol": "LTCUSDT",
+  "complete": true
+ },
+ "LUNA2USDT": {
+  "first_daily_bar_ms": null,
+  "first_daily_bar": null,
+  "bitget_symbol": null,
+  "complete": true
+ },
+ "MANAUSDT": {
+  "first_daily_bar_ms": 1638374400000,
+  "first_daily_bar": "2021-12-01",
+  "bitget_symbol": "MANAUSDT",
+  "complete": true
+ },
+ "MASKUSDT": {
+  "first_daily_bar_ms": 1660492800000,
+  "first_daily_bar": "2022-08-14",
+  "bitget_symbol": "MASKUSDT",
+  "complete": true
+ },
+ "MATICUSDT": {
+  "first_daily_bar_ms": null,
+  "first_daily_bar": null,
+  "bitget_symbol": null,
+  "complete": true
+ },
+ "MKRUSDT": {
+  "first_daily_bar_ms": null,
+  "first_daily_bar": null,
+  "bitget_symbol": null,
+  "complete": true
+ },
+ "MOODENGUSDT": {
+  "first_daily_bar_ms": 1727712000000,
+  "first_daily_bar": "2024-09-30",
+  "bitget_symbol": "MOODENGUSDT",
+  "complete": true
+ },
+ "MSTRUSDT": {
+  "first_daily_bar_ms": 1756224000000,
+  "first_daily_bar": "2025-08-26",
+  "bitget_symbol": "MSTRUSDT",
+  "complete": true
+ },
+ "MTLUSDT": {
+  "first_daily_bar_ms": 1729699200000,
+  "first_daily_bar": "2024-10-23",
+  "bitget_symbol": "MTLUSDT",
+  "complete": true
+ },
+ "NEARUSDT": {
+  "first_daily_bar_ms": 1640188800000,
+  "first_daily_bar": "2021-12-22",
+  "bitget_symbol": "NEARUSDT",
+  "complete": true
+ },
+ "NEIROUSDT": {
+  "first_daily_bar_ms": null,
+  "first_daily_bar": null,
+  "bitget_symbol": null,
+  "complete": true
+ },
+ "NEOUSDT": {
+  "first_daily_bar_ms": 1645632000000,
+  "first_daily_bar": "2022-02-23",
+  "bitget_symbol": "NEOUSDT",
+  "complete": true
+ },
+ "NOMUSDT": {
+  "first_daily_bar_ms": null,
+  "first_daily_bar": null,
+  "bitget_symbol": null,
+  "complete": true
+ },
+ "NVDAUSDT": {
+  "first_daily_bar_ms": 1755532800000,
+  "first_daily_bar": "2025-08-18",
+  "bitget_symbol": "NVDAUSDT",
+  "complete": true
+ },
+ "OCEANUSDT": {
+  "first_daily_bar_ms": null,
+  "first_daily_bar": null,
+  "bitget_symbol": null,
+  "complete": true
+ },
+ "OGNUSDT": {
+  "first_daily_bar_ms": 1691596800000,
+  "first_daily_bar": "2023-08-09",
+  "bitget_symbol": "OGNUSDT",
+  "complete": true
+ },
+ "OMUSDT": {
+  "first_daily_bar_ms": null,
+  "first_daily_bar": null,
+  "bitget_symbol": null,
+  "complete": true
+ },
+ "ONDOUSDT": {
+  "first_daily_bar_ms": 1711468800000,
+  "first_daily_bar": "2024-03-26",
+  "bitget_symbol": "ONDOUSDT",
+  "complete": true
+ },
+ "ONTUSDT": {
+  "first_daily_bar_ms": 1681056000000,
+  "first_daily_bar": "2023-04-09",
+  "bitget_symbol": "ONTUSDT",
+  "complete": true
+ },
+ "OPUSDT": {
+  "first_daily_bar_ms": 1655049600000,
+  "first_daily_bar": "2022-06-12",
+  "bitget_symbol": "OPUSDT",
+  "complete": true
+ },
+ "ORDIUSDT": {
+  "first_daily_bar_ms": 1684598400000,
+  "first_daily_bar": "2023-05-20",
+  "bitget_symbol": "ORDIUSDT",
+  "complete": true
+ },
+ "PAXGUSDT": {
+  "first_daily_bar_ms": 1719590400000,
+  "first_daily_bar": "2024-06-28",
+  "bitget_symbol": "PAXGUSDT",
+  "complete": true
+ },
+ "PENDLEUSDT": {
+  "first_daily_bar_ms": 1690560000000,
+  "first_daily_bar": "2023-07-28",
+  "bitget_symbol": "PENDLEUSDT",
+  "complete": true
+ },
+ "PENGUUSDT": {
+  "first_daily_bar_ms": 1734451200000,
+  "first_daily_bar": "2024-12-17",
+  "bitget_symbol": "PENGUUSDT",
+  "complete": true
+ },
+ "PEOPLEUSDT": {
+  "first_daily_bar_ms": 1645027200000,
+  "first_daily_bar": "2022-02-16",
+  "bitget_symbol": "PEOPLEUSDT",
+  "complete": true
+ },
+ "PERPUSDT": {
+  "first_daily_bar_ms": null,
+  "first_daily_bar": null,
+  "bitget_symbol": null,
+  "complete": true
+ },
+ "PIPPINUSDT": {
+  "first_daily_bar_ms": 1737129600000,
+  "first_daily_bar": "2025-01-17",
+  "bitget_symbol": "PIPPINUSDT",
+  "complete": true
+ },
+ "PLAYUSDT": {
+  "first_daily_bar_ms": 1753891200000,
+  "first_daily_bar": "2025-07-30",
+  "bitget_symbol": "PLAYUSDT",
+  "complete": true
+ },
+ "PNUTUSDT": {
+  "first_daily_bar_ms": 1731254400000,
+  "first_daily_bar": "2024-11-10",
+  "bitget_symbol": "PNUTUSDT",
+  "complete": true
+ },
+ "POPCATUSDT": {
+  "first_daily_bar_ms": 1722096000000,
+  "first_daily_bar": "2024-07-27",
+  "bitget_symbol": "POPCATUSDT",
+  "complete": true
+ },
+ "PUMPUSDT": {
+  "first_daily_bar_ms": 1752422400000,
+  "first_daily_bar": "2025-07-13",
+  "bitget_symbol": "PUMPUSDT",
+  "complete": true
+ },
+ "REEFUSDT": {
+  "first_daily_bar_ms": null,
+  "first_daily_bar": null,
+  "bitget_symbol": null,
+  "complete": true
+ },
+ "RIVERUSDT": {
+  "first_daily_bar_ms": 1760630400000,
+  "first_daily_bar": "2025-10-16",
+  "bitget_symbol": "RIVERUSDT",
+  "complete": true
+ },
+ "RLCUSDT": {
+  "first_daily_bar_ms": null,
+  "first_daily_bar": null,
+  "bitget_symbol": null,
+  "complete": true
+ },
+ "RNDRUSDT": {
+  "first_daily_bar_ms": null,
+  "first_daily_bar": null,
+  "bitget_symbol": null,
+  "complete": true
+ },
+ "RUNEUSDT": {
+  "first_daily_bar_ms": 1649952000000,
+  "first_daily_bar": "2022-04-14",
+  "bitget_symbol": "RUNEUSDT",
+  "complete": true
+ },
+ "SAGAUSDT": {
+  "first_daily_bar_ms": null,
+  "first_daily_bar": null,
+  "bitget_symbol": null,
+  "complete": true
+ },
+ "SANDUSDT": {
+  "first_daily_bar_ms": 1638892800000,
+  "first_daily_bar": "2021-12-07",
+  "bitget_symbol": "SANDUSDT",
+  "complete": true
+ },
+ "SEIUSDT": {
+  "first_daily_bar_ms": 1692201600000,
+  "first_daily_bar": "2023-08-16",
+  "bitget_symbol": "SEIUSDT",
+  "complete": true
+ },
+ "SFPUSDT": {
+  "first_daily_bar_ms": 1681833600000,
+  "first_daily_bar": "2023-04-18",
+  "bitget_symbol": "SFPUSDT",
+  "complete": true
+ },
+ "SIRENUSDT": {
+  "first_daily_bar_ms": 1742400000000,
+  "first_daily_bar": "2025-03-19",
+  "bitget_symbol": "SIRENUSDT",
+  "complete": true
+ },
+ "SKYAIUSDT": {
+  "first_daily_bar_ms": 1747065600000,
+  "first_daily_bar": "2025-05-12",
+  "bitget_symbol": "SKYAIUSDT",
+  "complete": true
+ },
+ "SNXUSDT": {
+  "first_daily_bar_ms": 1656604800000,
+  "first_daily_bar": "2022-06-30",
+  "bitget_symbol": "SNXUSDT",
+  "complete": true
+ },
+ "SOLUSDT": {
+  "first_daily_bar_ms": 1626969600000,
+  "first_daily_bar": "2021-07-22",
+  "bitget_symbol": "SOLUSDT",
+  "complete": true
+ },
+ "SPXUSDT": {
+  "first_daily_bar_ms": 1730131200000,
+  "first_daily_bar": "2024-10-28",
+  "bitget_symbol": "SPXUSDT",
+  "complete": true
+ },
+ "STMXUSDT": {
+  "first_daily_bar_ms": null,
+  "first_daily_bar": null,
+  "bitget_symbol": null,
+  "complete": true
+ },
+ "STORJUSDT": {
+  "first_daily_bar_ms": null,
+  "first_daily_bar": null,
+  "bitget_symbol": null,
+  "complete": true
+ },
+ "STRKUSDT": {
+  "first_daily_bar_ms": 1708444800000,
+  "first_daily_bar": "2024-02-20",
+  "bitget_symbol": "STRKUSDT",
+  "complete": true
+ },
+ "STXUSDT": {
+  "first_daily_bar_ms": 1678896000000,
+  "first_daily_bar": "2023-03-15",
+  "bitget_symbol": "STXUSDT",
+  "complete": true
+ },
+ "SUIUSDT": {
+  "first_daily_bar_ms": 1683129600000,
+  "first_daily_bar": "2023-05-03",
+  "bitget_symbol": "SUIUSDT",
+  "complete": true
+ },
+ "SXPUSDT": {
+  "first_daily_bar_ms": null,
+  "first_daily_bar": null,
+  "bitget_symbol": null,
+  "complete": true
+ },
+ "SYNUSDT": {
+  "first_daily_bar_ms": 1724169600000,
+  "first_daily_bar": "2024-08-20",
+  "bitget_symbol": "SYNUSDT",
+  "complete": true
+ },
+ "TAOUSDT": {
+  "first_daily_bar_ms": 1712764800000,
+  "first_daily_bar": "2024-04-10",
+  "bitget_symbol": "TAOUSDT",
+  "complete": true
+ },
+ "TIAUSDT": {
+  "first_daily_bar_ms": 1698768000000,
+  "first_daily_bar": "2023-10-31",
+  "bitget_symbol": "TIAUSDT",
+  "complete": true
+ },
+ "TOMOUSDT": {
+  "first_daily_bar_ms": null,
+  "first_daily_bar": null,
+  "bitget_symbol": null,
+  "complete": true
+ },
+ "TONUSDT": {
+  "first_daily_bar_ms": null,
+  "first_daily_bar": null,
+  "bitget_symbol": null,
+  "complete": true
+ },
+ "TRBUSDT": {
+  "first_daily_bar_ms": 1719417600000,
+  "first_daily_bar": "2024-06-26",
+  "bitget_symbol": "TRBUSDT",
+  "complete": true
+ },
+ "TRUMPUSDT": {
+  "first_daily_bar_ms": 1737129600000,
+  "first_daily_bar": "2025-01-17",
+  "bitget_symbol": "TRUMPUSDT",
+  "complete": true
+ },
+ "TRXUSDT": {
+  "first_daily_bar_ms": 1598544000000,
+  "first_daily_bar": "2020-08-27",
+  "bitget_symbol": "TRXUSDT",
+  "complete": true
+ },
+ "TSLAUSDT": {
+  "first_daily_bar_ms": 1755532800000,
+  "first_daily_bar": "2025-08-18",
+  "bitget_symbol": "TSLAUSDT",
+  "complete": true
+ },
+ "TURBOUSDT": {
+  "first_daily_bar_ms": 1718726400000,
+  "first_daily_bar": "2024-06-18",
+  "bitget_symbol": "TURBOUSDT",
+  "complete": true
+ },
+ "TUTUSDT": {
+  "first_daily_bar_ms": 1742313600000,
+  "first_daily_bar": "2025-03-18",
+  "bitget_symbol": "TUTUSDT",
+  "complete": true
+ },
+ "UBUSDT": {
+  "first_daily_bar_ms": 1757606400000,
+  "first_daily_bar": "2025-09-11",
+  "bitget_symbol": "UBUSDT",
+  "complete": true
+ },
+ "UMAUSDT": {
+  "first_daily_bar_ms": 1729785600000,
+  "first_daily_bar": "2024-10-24",
+  "bitget_symbol": "UMAUSDT",
+  "complete": true
+ },
+ "UNFIUSDT": {
+  "first_daily_bar_ms": null,
+  "first_daily_bar": null,
+  "bitget_symbol": null,
+  "complete": true
+ },
+ "UNIUSDT": {
+  "first_daily_bar_ms": 1600704000000,
+  "first_daily_bar": "2020-09-21",
+  "bitget_symbol": "UNIUSDT",
+  "complete": true
+ },
+ "VELVETUSDT": {
+  "first_daily_bar_ms": 1752508800000,
+  "first_daily_bar": "2025-07-14",
+  "bitget_symbol": "VELVETUSDT",
+  "complete": true
+ },
+ "VIRTUALUSDT": {
+  "first_daily_bar_ms": 1730390400000,
+  "first_daily_bar": "2024-10-31",
+  "bitget_symbol": "VIRTUALUSDT",
+  "complete": true
+ },
+ "VVVUSDT": {
+  "first_daily_bar_ms": 1737993600000,
+  "first_daily_bar": "2025-01-27",
+  "bitget_symbol": "VVVUSDT",
+  "complete": true
+ },
+ "WAVESUSDT": {
+  "first_daily_bar_ms": null,
+  "first_daily_bar": null,
+  "bitget_symbol": null,
+  "complete": true
+ },
+ "WIFUSDT": {
+  "first_daily_bar_ms": 1709913600000,
+  "first_daily_bar": "2024-03-08",
+  "bitget_symbol": "WIFUSDT",
+  "complete": true
+ },
+ "WLDUSDT": {
+  "first_daily_bar_ms": 1690214400000,
+  "first_daily_bar": "2023-07-24",
+  "bitget_symbol": "WLDUSDT",
+  "complete": true
+ },
+ "WLFIUSDT": {
+  "first_daily_bar_ms": 1755878400000,
+  "first_daily_bar": "2025-08-22",
+  "bitget_symbol": "WLFIUSDT",
+  "complete": true
+ },
+ "WOOUSDT": {
+  "first_daily_bar_ms": 1661788800000,
+  "first_daily_bar": "2022-08-29",
+  "bitget_symbol": "WOOUSDT",
+  "complete": true
+ },
+ "XAGUSDT": {
+  "first_daily_bar_ms": 1767715200000,
+  "first_daily_bar": "2026-01-06",
+  "bitget_symbol": "XAGUSDT",
+  "complete": true
+ },
+ "XAUUSDT": {
+  "first_daily_bar_ms": 1765555200000,
+  "first_daily_bar": "2025-12-12",
+  "bitget_symbol": "XAUUSDT",
+  "complete": true
+ },
+ "XLMUSDT": {
+  "first_daily_bar_ms": 1616083200000,
+  "first_daily_bar": "2021-03-18",
+  "bitget_symbol": "XLMUSDT",
+  "complete": true
+ },
+ "XPLUSDT": {
+  "first_daily_bar_ms": 1756137600000,
+  "first_daily_bar": "2025-08-25",
+  "bitget_symbol": "XPLUSDT",
+  "complete": true
+ },
+ "XRPUSDT": {
+  "first_daily_bar_ms": 1566921600000,
+  "first_daily_bar": "2019-08-27",
+  "bitget_symbol": "XRPUSDT",
+  "complete": true
+ },
+ "YFIUSDT": {
+  "first_daily_bar_ms": null,
+  "first_daily_bar": null,
+  "bitget_symbol": null,
+  "complete": true
+ },
+ "YGGUSDT": {
+  "first_daily_bar_ms": 1691337600000,
+  "first_daily_bar": "2023-08-06",
+  "bitget_symbol": "YGGUSDT",
+  "complete": true
+ },
+ "ZECUSDT": {
+  "first_daily_bar_ms": 1760630400000,
+  "first_daily_bar": "2025-10-16",
+  "bitget_symbol": "ZECUSDT",
+  "complete": true
+ },
+ "ZENUSDT": {
+  "first_daily_bar_ms": 1736092800000,
+  "first_daily_bar": "2025-01-05",
+  "bitget_symbol": "ZENUSDT",
+  "complete": true
+ },
+ "ZROUSDT": {
+  "first_daily_bar_ms": 1718812800000,
+  "first_daily_bar": "2024-06-19",
+  "bitget_symbol": "ZROUSDT",
+  "complete": true
+ },
+ "ZRXUSDT": {
+  "first_daily_bar_ms": 1652112000000,
+  "first_daily_bar": "2022-05-09",
+  "bitget_symbol": "ZRXUSDT",
+  "complete": true
+ },
+ "_fetched": "2026-10-15T03:49:21.346464+00:00"
 }
