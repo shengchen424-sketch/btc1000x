@@ -1,4 +1,4 @@
-# BTC 1000X — Phase 2 status (2026-10-16 ~02:40 UTC, after the executability audits and the reproducibility check)
+# BTC 1000X — Phase 2 status (2026-10-16 ~03:00 UTC, after the executability audits, the reproducibility check and the production-side logging/shadow branches)
 
 ## Scoreboard (this repository)
 
@@ -52,6 +52,20 @@ Twelve families, 105 trials, three holdout looks. Shadow registries empty.
   identity reconciled to 0.0000 residual; 27 live orders all full fills at 6.0 bps, ~0 slippage; live
   2026-10-01..10-14 −2.78 % (13 days, not annualised); three executor-vs-replay rule differences found
   and copied into 002v2; four logging gaps on the production side listed, nothing changed.
+- Production-side follow-up (VPS session, Smart-trader repo, 2026-10-15/16, reviewed here from the pushed branches):
+  `v31/logging-fixes` @ e7758e2 (order lifecycle events with source/armed/phase; ledger fees and funding with
+  unknown != 0 and billId de-duplication; decision records with decision_id, code/config version, data
+  cut-off and hashes, full ranking, exclusion reasons, rounded targets, observe-only post-rounding risk check;
+  262 tests pass vs 249 baseline, same 4 known failures; selection statements unchanged — `select()` wraps the
+  old `targets()` code and R2/R3 replays match the logs). `v31/xshadow` @ 7b88232 (order-disabled forward paper
+  shadow of A / RM14 / BLEND25, spec XSHADOW-1 hash 614971cfced6ddc3 referencing btc1000x 66c9ad1, no adapter /
+  gateway imports, restart-safe paper fills, smoke test on public data, hardened systemd units proposed, not
+  installed, no prospective start time yet). Neither is deployed; both wait for the owner.
+  Note: BLEND25 = z(flow) + 0.5 z(RM14), i.e. effective weights 2/3 : 1/3 (the "0.75/0.25" shorthand used in one
+  coordination message was wrong; the code and EXP-015 report were always 0.5 z); its EXP-015 verdict is DISCARD
+  and it is shadowed for observation only. Live incident: the 2026-10-16 00:35 UTC live pass aborted at start-up
+  on a Bitget public-API timeout (`/mix/market/contracts`); no account read, no order; read-only check afterwards:
+  equity 102.50, 10 positions / 10 stops, ledger 0 difference; no retry logic exists (fix needs owner approval).
 - `docs/FAILURE_INDEX.md` created: 26 mechanism families with their failure causes.
 
 ## The owner's five priorities, against the evidence
