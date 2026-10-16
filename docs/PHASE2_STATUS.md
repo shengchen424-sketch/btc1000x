@@ -1,4 +1,4 @@
-# BTC 1000X — Phase 2 status (2026-10-15 ~14:00 UTC, after the executability audits)
+# BTC 1000X — Phase 2 status (2026-10-16 ~02:40 UTC, after the executability audits and the reproducibility check)
 
 ## Scoreboard (this repository)
 
@@ -43,6 +43,11 @@ Twelve families, 105 trials, three holdout looks. Shadow registries empty.
   2023, AKE 2026, REEF/BLZ/BNX = 28 % of top-85 profit). Rules matter only at 105 USDT (v1 floor
   rounding -> ~300 USDT minimum was an artefact; live nearest-lot rule fully invests 105 USDT). Label:
   historical scenario under today's contract rules and Binance funding, not a verified return.
+  Reproduced byte-for-byte from a clean checkout of `66c9ad1` on the fixed data snapshot (33/33 files,
+  `REPRO.md`; a reproducibility check, not fresh validation). Post-rounding risk (`REPORT.md` §6): at
+  105 USDT single positions reach 15.7–16.5 % of equity (lot grid + absolute 5.5 USDT band), gross up to
+  1.2x at rebalance and 1.4x between, initial margin at 3x cross peaks at 48 % of equity; "cash 0" is a
+  notional-allocation measure, not free margin.
 - ST-AUDIT-003 (VPS session, read-only, redacted pack in Smart-trader `docs/audit/ST-AUDIT-003/`): account
   identity reconciled to 0.0000 residual; 27 live orders all full fills at 6.0 bps, ~0 slippage; live
   2026-10-01..10-14 −2.78 % (13 days, not annualised); three executor-vs-replay rule differences found

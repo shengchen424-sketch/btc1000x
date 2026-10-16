@@ -23,8 +23,11 @@ not a lower bound.**
 Still NOT modelled (live facts from ST-AUDIT-003): execution at 00:35 UTC the next day instead of the
 signal close (R1 ran 22.5 h late; fills vs Binance close cost −0.70 USDT over 27 fills, mostly R1);
 Bitget funding instead of Binance (+0.042 vs +0.013 USDT over 13 days, same positions); actual fee
-6.0 bps with ~0 measured slippage (the replay's 9 bps is ~3 bps/unit conservative, about 3 %/yr of
-the 10 %/yr cost line); the 2x trim reference is reset at every rebalance for kept positions
+6.0 bps; slippage is measured against a same-time quote only for R3 (13 fills, median 0.0 bps, worst
++11 bps), while R1/R2 are measured against the 1-minute open (approximation) and the −0.70 USDT
+fill-vs-Binance-close figure is execution delay plus price change, not slippage; the replay therefore
+keeps 9 bps (6 fee + 3 slippage) and no yearly "saving" is claimed from the 3 bps difference until
+slippage is measured on more fills with decision-time quotes; the 2x trim reference is reset at every rebalance for kept positions
 (approximation; the live reference was not audited); universe membership can differ by one coin
 when a non-ASCII contract is in the live top-30 (live ranks 29, this panel ranks a different 30th).
 
@@ -89,8 +92,10 @@ at 200 USDT skips are ≈ 0. Fees per unit traded still do not fall with capital
 every level), and returns do not rise with capital.
 
 ## 4. Cross-reference to ST-AUDIT-003 (VPS, read-only, Smart-trader `docs/audit/ST-AUDIT-003/`)
-- Account identity reconciled to 0.0000 USDT residual; 27 live orders, all single full fills, 6.0 bps,
-  median slippage 0.0 bps vs decision quote; no stop triggered; exchange positions = ledger = log.
+- Account identity reconciled to 0.0000 USDT residual; 27 live orders, all single full fills, 6.0 bps;
+  no stop triggered; exchange positions = ledger = log. This reconciles money and fills, not selection:
+  the decision-time rankings were not logged, so "live picks = rule" is shown only by reconstruction
+  for R2/R3 and cannot be shown for R1 (production logging fix #11 in ST-AUDIT-003 §3).
 - Live 2026-10-01 close -> 10-14 close: account −2.78 % (102.34 from 105.26); the live rule idealised
   (same-day, fractional, no cost) −3.57 %; the v1 replay rule −10.44 % because it held 龙虾USDT, −2.79 %
   with that contract excluded. 13 days are not annualised and say nothing about the scenario above
@@ -110,3 +115,43 @@ every level), and returns do not rise with capital.
   worst path +25 to +33 %, DD 22–28 %; forward checkpoints 2026-11-27, 12-25, 2027-04-02 unchanged.
 - No added capital, no new strategy, no change to the live executor from this audit.
 - RM14 / BLEND25: historical evidence only; a forward shadow is the only way to add independent data.
+
+## 6. Risk after nearest-lot rounding and the meaning of "cash 0" (added 2026-10-16, `st_audit2_paths.py`, `risk_after_rounding.csv`, `paths/`)
+Flow book, OPT and CONS, 7 offsets each; exposure = |notional| / equity; margin at the live setting
+(`rg/book/paper.py` LEVERAGE = 3, checked per order via `crossedMarginLeverage`, i.e. cross margin 3x).
+
+| | 105 USDT | 1,000 USDT |
+|---|---|---|
+| Per-symbol exposure at rebalance: median / p99 / max | 10.0 % / 14.1 % / **15.7 % (OPT), 16.5 % (CONS)** | 10.0 % / 10.9 % / 11.8 % |
+| Positions > 15 % of equity at rebalance (of 1,960 per scenario) | 1 (OPT), 2 (CONS); 8 of 27,380 across all paths; all BTC/CRV/SOL in 2023–24 when one lot was a large share of 10.5 USDT | 0 |
+| Positions outside 8–12 % at rebalance | 1,380 below 8 %, 1,819 above 12 % (of 27,380): the lot grid scatters sizes ±20–40 % around target | ≈ none |
+| Gross exposure at rebalance (max) | 1.17–1.19 | 1.02–1.03 |
+| Daily (between rebalances) max: single symbol / gross / |net| | 24 % / 1.39–1.44 / 0.24–0.27 | 21 % / 1.41–1.42 / 0.22 |
+| Initial margin used at 3x, max (gross / 3) | 46–48 % of equity | 47 % |
+| Free-margin trough (1 − margin used) | 52–54 % | 53 % |
+
+Readings.
+1. **Nearest-lot rounding does widen single positions at 105 USDT**: the ±50 % tolerance allows a slot of
+   up to 15 % of equity, and the 5.5 USDT band then keeps a same-direction position without resizing even
+   when it has drifted, which is how 15.7–16.5 % appears (band 5.5 USDT = 52 % of a 10.5 USDT slot at
+   105 USDT, but 5.5 % of a slot at 1,000 USDT; the live band is absolute, not proportional). The
+   replay's size-tolerance check is applied at order time only, as in the live code; drift is bounded by
+   the 2x trim (daily single-symbol maximum 24 %). This is a property of the live rules, not of the
+   replay, and it is a reason to keep the gross at 1.0x and leverage at 3x unchanged, not a reason to
+   change the rules from this audit.
+2. **Gross and net exposure** stay within 1.0–1.2x at rebalance and 1.4x between rebalances (winners
+   grow, losers shrink, equity falls); |net| peaks at 0.27 at 105 USDT. Nothing in the replay exceeds
+   what 3x cross margin can carry: initial margin peaks at 48 % of equity and the worst 7-offset drawdown
+   is 28 %, far from a cross-margin liquidation (which would need equity near the maintenance margin,
+   roughly 1–2 % of gross notional). Maintenance-margin tiers, funding deductions on margin and Bitget's
+   margin-ratio formula are not modelled; this is a headroom estimate, not a margin-call simulation.
+3. **"Cash 0" is a notional-allocation statement**: `cash_frac = 1 − gross notional / equity` at the
+   rebalance, so 0 % means the ten targets sum to about one times equity (gross 1.0x). It is not free
+   margin and not idle balance: with 3x cross leverage about one third of equity is posted as initial
+   margin and two thirds remain free at the rebalance. The v1 figure of "8 % cash" meant the floor
+   rounding left ~8 % of the target notional unplaced; v2's 0 % means nearest rounding places it. Neither
+   number is a liquidity reserve, and the live account's actual free margin is read from the exchange
+   snapshot (ST-AUDIT-003 `cycles.csv`), not from this replay.
+4. Open to the production side (ST-AUDIT-003 logging fix #3 / owner's request): record per rebalance the
+   rounded targets, the per-symbol exposure after rounding, gross/net exposure and the exchange's margin
+   headroom, so the next rebalance can be checked against these bounds directly.

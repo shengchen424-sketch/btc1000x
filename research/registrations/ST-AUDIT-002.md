@@ -52,3 +52,13 @@ unchanged. Outputs to `research/results/ST-AUDIT-002v2/`. Reporting label fixed 
 scenario under today's contract rules and Binance funding", never "verified Bitget return"; CONS is a
 sensitivity case, not a lower bound. Still not modelled: next-day 00:35 execution, Bitget funding,
 non-ASCII contracts (absent from the panel).
+
+## Addendum (2026-10-16): reproducibility check and post-rounding risk
+Owner's four conditions recorded: (1) nearest-lot rounding matching live does not make the risk acceptable
+by itself; per-symbol, gross, net exposure and margin headroom after rounding are reported (REPORT §6) and
+"cash 0" is defined as a notional-allocation measure; (2) the ST-AUDIT-003 reconciliation covers money
+and fills, not selection (rankings were not logged); (3) slippage claims are limited to fills with a
+same-time quote (R3) and no yearly saving is inferred from 9 vs 6 bps; (4) v2 is reproduced from a clean
+checkout of `66c9ad1` on the fixed data snapshot (REPRO.md): 33/33 output files identical. Labelled a
+reproducibility check, not fresh validation. `st_audit2_paths.py` is a companion that emits daily equity
+and holdings for future comparison; it changes no result.
