@@ -124,7 +124,8 @@ Chainlink 价格 ──────┘                  │
 ## 6. 进度（2026-10-29，所有者批准第 1–3 项）
 
 - 第 3 项完成：市场普查与结算规则核对（上表；EXP-016a）。
-- 第 1 项：盘口采集器 `src/pmc/collector.py` 与 `ops/pm-book-collector.service` 已写好并测试（本地 90 秒试跑：197 个市场，约 55 MB/天，上限 3 GiB，可用磁盘低于 55 GiB 时自动停止）。需要在 VPS 上安装，见 `src/pmc/README.md`。
+- 第 1 项：**已在 VPS 安装运行**（2026-10-29 约 15:20Z）：`/root/polymarket-btc-hunter/pmc/`（与 `src/pmc` 逐字节一致），服务 `pm-book-collector`，输出 `/root/polymarket-btc-hunter/data/pm_books`，独立 venv。首次检查：197 个市场、9 类窗口，内存 24 MB，可用磁盘 88 GiB。上限 3 GiB，可用磁盘低于 55 GiB 时自动停止。
+- btc-hunter 已有结论（盘点）：H6/H8/H10/H20/H22/H23 FAIL 或关闭（被动挂单、吃单预测、跟单）；H24（1 小时吃单）、H18（流动性奖励）未出结论。阶段 2 注册前必须逐条对照，不重复已证伪的设计。旧采集（btc_candle_hunter / settle_watcher，至 08-15）可作为独立的早期数据，按当时规则逐市场使用。
 - 第 2 项：EXP-016b 定价引擎校准，结果见 `research/results/EXP-016/016b.md`。
 
 ## 7. 原定的下一步
