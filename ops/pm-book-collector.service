@@ -1,0 +1,19 @@
+[Unit]
+Description=Polymarket crypto window book collector (read-only public CLOB/Gamma, no key, no orders)
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/root/btc1000x
+Environment=B1K_ROOT=/root/btc1000x
+# Output lives with the Polymarket project; 3 GiB cap (~55 MB/day measured 2026-10-29), stops below 55 GiB free.
+ExecStart=/root/btc1000x/.venv/bin/python -m pmc.collector --out /root/polymarket-btc-hunter/data/pm_books --assets btc --tags bitcoin --max-gb 3 --min-free-gb 55
+Restart=on-failure
+RestartSec=60
+Nice=19
+IOSchedulingClass=idle
+MemoryMax=300M
+CPUQuota=20%
+
+[Install]
+WantedBy=multi-user.target
