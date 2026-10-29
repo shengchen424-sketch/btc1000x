@@ -5,9 +5,9 @@ import re
 
 # family -> (resolution source, rule). Re-checked by pmc.census against every live description.
 RULES = {
-    "updown_5m":  ("chainlink_twap60", "Chainlink BTC/USD TWAP-60s stream vs value at window start (end-point vs window-average: see EXP-016a)"),
-    "updown_15m": ("chainlink_twap60", "Chainlink BTC/USD TWAP-60s stream vs value at window start (end-point vs window-average: see EXP-016a)"),
-    "updown_4h":  ("chainlink_twap60", "Chainlink BTC/USD TWAP-60s stream vs value at window start (end-point vs window-average: see EXP-016a)"),
+    "updown_5m":  ("chainlink_twap60", "Chainlink BTC/USD TWAP-60s at window end >= at window start (end-point reading, EXP-016a)"),
+    "updown_15m": ("chainlink_twap60", "Chainlink BTC/USD TWAP-60s at window end >= at window start (end-point reading, EXP-016a)"),
+    "updown_4h":  ("chainlink_twap60", "Chainlink BTC/USD TWAP-60s at window end >= at window start (end-point reading, EXP-016a)"),
     "updown_1h":  ("binance_spot_1h", "1h candle close >= open"),
     "updown_1d":  ("binance_spot_1m", "1m close at 12:00 ET today > same yesterday (equal -> 50/50)"),
     "above_1d":   ("binance_spot_1m", "1m close at 12:00 ET on the date > strike"),

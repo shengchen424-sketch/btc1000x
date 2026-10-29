@@ -14,7 +14,8 @@
 | EXP-009 | I Fear & Greed / exchange flows | 6 | 1 CANDIDATE (8 trades) | **REJECTED** | closed |
 | EXP-010 | B long with maker entries (rescue) | 4 | net still negative | — | closed |
 | EXP-012 / 012b | J order-flow shocks (taker imbalance, intensity, OI) | 16 | gross within ±0.02 R | — | closed |
-| EXP-011 | K Polymarket daily temperature: ensemble vs market | — | running (prices exist only from ~2026-09-15) | — | in progress |
+| EXP-011 | K Polymarket daily temperature: ensemble vs market | — | market calibrated (Brier 0.058) | — | closed |
+| EXP-016 | L Polymarket crypto windows: resolution check + fair-value engine (no market comparison yet) | 3 models × 4 windows | 15m/1h/4h CALIBRATED, 1d NOT | — | infrastructure; market atlas after ~3 weeks of books |
 
 Twelve families, 105 trials, three holdout looks. Shadow registries empty.
 
